@@ -1,0 +1,59 @@
+.user {
+    position: relative;
+    .user_dropdown {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin-top: 5px;
+      border-radius: 4px;
+      height: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: start;
+      position: absolute;
+      right: 0;
+      transition: 0.5s;
+      ul {
+        margin: 0;
+        padding: 10px;
+        li {
+          list-style: none;
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+          a {
+            color: rgba(250, 250, 250, 1);
+          }
+        }
+      }
+    }
+    .active_user_dropdown {
+      height: 150px;
+    }
+  }
+  @media only screen and ( max-width:760px) {
+    .user{
+        margin-top: 0 !important;
+        .menu_account{
+            margin: 0;
+        }
+        .user_dropdown{
+            
+            background-color: unset;
+            position: relative;
+            ul {
+                display: flex;
+                flex-direction: column !important;
+                margin: 0;
+                padding: 0 0 0 5px;
+                li {
+                  list-style: none;
+                  &:not(:last-child) {
+                    margin-bottom: 10px;
+                  }
+                  a {
+                    color: #000;
+                  }
+                }
+              }
+        }
+    }
+  }

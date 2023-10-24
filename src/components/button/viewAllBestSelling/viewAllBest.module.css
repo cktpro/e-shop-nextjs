@@ -1,0 +1,22 @@
+.view_all_best {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 159px;
+    height: 56px;
+    /* padding: 16px 48px 16px 48px; */
+    border-radius: 4px;
+    gap: 10px;
+    background: #DB4444;
+    border: none;
+}
+
+.button_content {
+    width: fit-content;
+    height: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: #FAFAFA;
+}

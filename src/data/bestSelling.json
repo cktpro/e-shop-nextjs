@@ -1,0 +1,62 @@
+[
+    {
+      "isNew": true,
+      "discount": 40,
+      "imgSrc": "static/media/gamePad.png",
+      "love": true,
+      "name": "HAVIT HV-G92 Gamepad",
+      "discountedPrice": 100,
+      "price": 160,
+      "numOfEvaluate": 88,
+      "numOfEvaluate1Star": 20,
+      "numOfEvaluate2Star": 20,
+      "numOfEvaluate3Star": 20,
+      "numOfEvaluate4Star": 20,
+      "numOfEvaluate5Star": 8
+    },
+    {
+      "isNew": false,
+      "discount": 35,
+      "imgSrc": "static/media/keyBoard.png",
+      "love": false,
+      "name": "AK-900 Wired Keyboard",
+      "discountedPrice": 100,
+      "price": 1160,
+      "numOfEvaluate": 120,
+      "numOfEvaluate1Star": 0,
+      "numOfEvaluate2Star": 0,
+      "numOfEvaluate3Star": 10,
+      "numOfEvaluate4Star": 10,
+      "numOfEvaluate5Star": 100
+    },
+    {
+      "isNew": true,
+      "discount": 35,
+      "imgSrc": "static/media/monitor.png",
+      "love": false,
+      "name": "IPS LCD Gaming Monitor",
+      "discountedPrice": 100,
+      "price": 400,
+      "numOfEvaluate": 100,
+      "numOfEvaluate1Star": 0,
+      "numOfEvaluate2Star": 0,
+      "numOfEvaluate3Star": 0,
+      "numOfEvaluate4Star": 50,
+      "numOfEvaluate5Star": 50
+    },
+    {
+      "isNew": false,
+      "discount": 10,
+      "imgSrc": "static/media/waterCooling.png",
+      "love": false,
+      "name": "RGB liquid CPU Cooler",
+      "discountedPrice": 100,
+      "price": 170,
+      "numOfEvaluate": 80,
+      "numOfEvaluate1Star": 0,
+      "numOfEvaluate2Star": 5,
+      "numOfEvaluate3Star": 0,
+      "numOfEvaluate4Star": 5,
+      "numOfEvaluate5Star": 70
+    }
+  ]

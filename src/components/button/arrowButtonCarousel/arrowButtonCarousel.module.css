@@ -1,0 +1,21 @@
+.cover_next_back_in {
+    position: relative;
+    right: 0;
+    top: 0;
+    display: flex;
+    width: fit-content;
+    height: 46px;
+    gap: 8px;
+}
+
+.cover_back {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+}
+
+.cover_next {
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+}

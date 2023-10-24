@@ -1,0 +1,16 @@
+.radio:checked {
+  background-color: #212529;
+}
+
+.checkbox:checked {
+  background-color: #dc3545;
+}
+
+.required::after {
+  content: "*";
+  color: #dc3545;
+}
+
+.input_info {
+ background-color: #f1f3f4;
+}

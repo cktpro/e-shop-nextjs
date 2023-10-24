@@ -1,0 +1,16 @@
+
+.section1{
+    display: flex;
+}
+section{
+    &:not(:first-child){
+        margin-bottom: 1em;
+    }
+}
+@media screen and (max-width: 768px) {
+    .section1{
+        margin-top: 1em;
+        flex-direction: column;
+    }
+}
+    

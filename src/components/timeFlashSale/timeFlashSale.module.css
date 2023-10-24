@@ -1,0 +1,158 @@
+.cover_time_in {
+    position: relative;
+    width: fit-content;
+    height: 50px;
+}
+
+.cover_day {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 50px;
+    gap: 4px;
+}
+
+.day {
+    width: fit-content;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+}
+
+.day_num {
+    width: fit-content;
+    height: 28px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: #000000;
+}
+
+.cover_two_dot_1 {
+    position: absolute;
+    width: 4px;
+    height: 16px;
+    top: 26px;
+    left: 63px;
+}
+
+.cover_hour {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: fit-content;
+    height: 50px;
+    top: 0px;
+    left: 84px;
+    gap: 4px;
+}
+
+.hour {
+    width: fit-content;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+}
+
+.hour_num {
+    width: fit-content;
+    height: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: #000000;
+}
+
+.cover_two_dot_2 {
+    position: absolute;
+    width: 4px;
+    height: 16px;
+    top: 26px;
+    left: 143px;
+}
+
+.cover_minute {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 50px;
+    top: 0px;
+    left: 164px;
+    gap: 4px;
+}
+
+.minute {
+    width: fit-content;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+}
+
+.minute_num {
+    width: fit-content;
+    height: 28px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: #000000;
+}
+
+.cover_two_dot_3 {
+    position: absolute;
+    width: 4px;
+    height: 16px;
+    top: 26px;
+    left: 230px;
+}
+
+.cover_second {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 50px;
+    top: 0px;
+    left: 251px;
+    gap: 4px;
+}
+
+.second {
+    width: fit-content;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+}
+
+.second_num {
+    width: fit-content;
+    height: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: #000000;
+}

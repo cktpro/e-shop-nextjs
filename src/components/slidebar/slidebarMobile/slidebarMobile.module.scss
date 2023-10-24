@@ -1,0 +1,21 @@
+.slide_mobile{
+    display: none;
+    .grid_container {
+        margin-top: 1em;
+        display: grid;
+        grid-template-columns: calc(100% / 3 - calc(20px / 3)) calc(100% / 3 - calc(20px / 3)) calc(100% / 3 - calc(20px / 3));
+        gap: 10px;
+      }
+      .grid_item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+      }
+}
+@media screen and (max-width: 768px) {
+    .slide_mobile{
+        display: block;
+    }
+}

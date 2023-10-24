@@ -1,0 +1,34 @@
+.custom_row {
+    margin: 0;
+    padding: 0;
+}
+
+.cover_banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 892 / 344;
+    margin-top: 182px;
+}
+
+.carousel_item {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel_indicators {
+    position: absolute;
+    bottom: 0px;
+}
+
+.carousel_inner {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+.banner_content {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}

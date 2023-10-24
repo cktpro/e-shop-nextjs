@@ -1,0 +1,90 @@
+.custom_row {
+    margin: 0;
+    padding: 0;
+}
+
+.custom_col {
+    margin: 0;
+    padding: 0;
+}
+
+.cover_flashsalelist {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 40px;
+}
+
+.cover_today_flashsale {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 103px;
+    gap: 24px;
+}
+
+.cover_today {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 40px;
+    gap: 16px;
+}
+
+.rectangle {
+    width: 20px;
+    height: 40px;
+    border-radius: 4px;
+    background: #DB4444;
+}
+
+.today {
+    width: 64px;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #DB4444;
+}
+
+.cover_flashsale_text {
+    width: fit-content;
+    height: 48px;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: #000000;
+}
+
+.cover_time_out {
+    margin-top: 10px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: bottom;
+}
+
+@media (max-width: 427px) {
+    .cover_time_out {
+       margin-bottom: 30px;
+    }
+}
+
+.cover_view_all_products {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hr_bottom_section {
+    width: 100%;
+    opacity: 0.3px;
+    background: #000000;
+    border: 0.5px solid #000000
+}
