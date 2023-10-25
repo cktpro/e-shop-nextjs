@@ -1,63 +1,67 @@
 import React, { useCallback, useState } from "react";
-
+import Image from "next/image";
 import styles from "./slidebar.module.scss";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 const Category = [
   {
     id: 1,
-    name: "Women's Fashion",
+    name: "Điện thoại",
     sub: [
       {
         id: 1,
-        name: "Clothing",
+        name: "Apple",
       },
       {
         id: 2,
-        name: "Shoes",
+        name: "Samsung",
       },
       {
         id: 3,
-        name: "Bags",
+        name: "Xiaomi",
       },
       {
         id: 4,
-        name: "Watches",
+        name: "Nokia",
       },
     ],
   },
   {
     id: 2,
-    name: "Men's Fashion",
+    name: "Laptop",
     sub: [
       {
         id: 1,
-        name: "Clothing",
+        name: "Asus",
       },
       {
         id: 2,
-        name: "Shoes",
+        name: "Acer",
       },
       {
         id: 3,
-        name: "Bags",
+        name: "Apple Macbook",
       },
       {
         id: 4,
-        name: "Watches",
+        name: "Dell",
+      },
+      {
+        id: 4,
+        name: "HP",
       },
     ],
   },
   {
     id: 3,
-    name: "Electronics",
+    name: "Tablet",
   },
   {
     id: 4,
-    name: "Home & Lifestyle",
+    name: "Smart Watch",
   },
   {
     id: 5,
-    name: "Medicine",
+    name: "Headphone",
   },
 ];
 function SlideBar(props) {
@@ -96,16 +100,16 @@ function SlideBar(props) {
             if (item.sub && item.sub.length > 0) {
               return (
                 <li key={index}>
-                  <Link>{item.name}</Link>
+                  <Link href="/">{item.name}</Link>
                   <i onClick={showMenu(index)}>
                     {item.isExtend ? (
-                      <img
-                        src={require("assets/images/icon/slidebar/DropDown_Actived.png")}
+                      <Image
+                        src={require("@/assets/images/icon/slidebar/DropDown_Actived.png")}
                         alt="Dropdown_Active"
                       />
                     ) : (
-                      <img
-                        src={require("assets/images/icon/slidebar/DropDown.png")}
+                      <Image
+                        src={require("@/assets/images/icon/slidebar/DropDown.png")}
                         alt="Dropdown"
                       />
                     )}
@@ -120,18 +124,18 @@ function SlideBar(props) {
                     {item.sub.map((item) => {
                       return (
                         <li onClick={hiddenMenu()} key={item.id}>
-                          <Link>{item.name}</Link>
+                          <Link href="/">{item.name}</Link>
                         </li>
                       );
                     })}
                   </ul>
                 </li>
               );
-              //    return <li key={index}>{item.name}<i><img src={require('assets/images/icon/slidebar/DropDown.png')} alt="Dropdown" /></i></li>
+              //    return <li key={index}>{item.name}<i><Image src={require('assets/images/icon/slidebar/DropDown.png')} alt="Dropdown" /></i></li>
             }
             return (
               <li key={item.id}>
-                <Link>{item.name}</Link>
+                <Link href="/">{item.name}</Link>
               </li>
             );
           })}

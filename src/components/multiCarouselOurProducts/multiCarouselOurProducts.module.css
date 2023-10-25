@@ -1,0 +1,16 @@
+.cover_carousel_our_products {
+    position: relative;
+}
+.swiper_slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+.cover_our_carousel_row {
+    margin-bottom: 60px;
+}

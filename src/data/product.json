@@ -2,7 +2,7 @@
     {
       "isNew": true,
       "discount": 40,
-      "imgSrc": "static/media/gamePad.png",
+      "imgSrc": "/static/media/gamePad.png",
       "love": true,
       "name": "HAVIT HV-G92 Gamepad",
       "discountedPrice": 100,
@@ -21,7 +21,7 @@
     {
       "isNew": false,
       "discount": 35,
-      "imgSrc": "static/media/keyBoard.png",
+      "imgSrc": "/static/media/keyBoard.png",
       "love": false,
       "name": "AK-900 Wired Keyboard",
       "discountedPrice": 100,
@@ -40,7 +40,7 @@
     {
       "isNew": true,
       "discount": 35,
-      "imgSrc": "static/media/monitor.png",
+      "imgSrc": "/static/media/monitor.png",
       "love": false,
       "name": "IPS LCD Gaming Monitor",
       "discountedPrice": 100,
@@ -59,7 +59,7 @@
     {
       "isNew": false,
       "discount": 10,
-      "imgSrc": "static/media/waterCooling.png",
+      "imgSrc": "/static/media/waterCooling.png",
       "love": false,
       "name": "RGB liquid CPU Cooler",
       "discountedPrice": 100,
@@ -78,7 +78,7 @@
     {
       "isNew": true,
       "discount": 20,
-      "imgSrc": "static/media/camera.png",
+      "imgSrc": "/static/media/camera.png",
       "love": false,
       "name": "CANON EOS DSLR Camera",
       "discountedPrice": 100,
@@ -97,7 +97,7 @@
     {
       "isNew": false,
       "discount": 5,
-      "imgSrc": "static/media/laptop.png",
+      "imgSrc": "/static/media/laptop.png",
       "love": false,
       "name": "ASUS FHD Gaming Laptop",
       "discountedPrice": 100,
@@ -116,7 +116,7 @@
     {
       "isNew": true,
       "discount": 50,
-      "imgSrc": "static/media/gamePad2.png",
+      "imgSrc": "/static/media/gamePad2.png",
       "love": false,
       "name": "GP11 Shooter USB Gamepad",
       "discountedPrice": 100,
@@ -135,7 +135,7 @@
     {
       "isNew": false,
       "discount": 5,
-      "imgSrc": "static/media/laptop.png",
+      "imgSrc": "/static/media/laptop.png",
       "love": false,
       "name": "ASUS FHD Gaming Laptop",
       "discountedPrice": 100,
@@ -154,7 +154,7 @@
     {
       "isNew": true,
       "discount": 50,
-      "imgSrc": "static/media/gamePad2.png",
+      "imgSrc": "/static/media/gamePad2.png",
       "love": false,
       "name": "GP11 Shooter USB Gamepad",
       "discountedPrice": 100,
@@ -173,7 +173,7 @@
     {
       "isNew": true,
       "discount": 50,
-      "imgSrc": "static/media/gamePad2.png",
+      "imgSrc": "/static/media/gamePad2.png",
       "love": false,
       "name": "GP11 Shooter USB Gamepad",
       "discountedPrice": 100,

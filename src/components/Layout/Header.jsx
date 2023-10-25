@@ -83,10 +83,10 @@ function Header(props) {
             >
               <ul className={`${styles.menu} list-unstyled`} onClick={()=>setIsShowMenu(false)}>
               <li><Link href="/" >Home</Link></li>
-              <li><Link href="/" >Contract</Link></li>
-              <li><Link href="/" >About</Link></li>
-              <li className={styles.li_pc}><Link href="/">Sign Up</Link></li>
-              <li className={styles.li_mobile}><Link href="/" >Whishlist</Link></li>
+              <li><Link href="/contract" >Contract</Link></li>
+              <li><Link href="/about" >About</Link></li>
+              <li className={styles.li_pc}><Link href="/signup">Sign Up</Link></li>
+              <li className={styles.li_mobile}><Link href="/whishlist" >Whishlist</Link></li>
               </ul>
               <ul className={styles.account}>
               {/* <li><Account title="Account" /></li> */}

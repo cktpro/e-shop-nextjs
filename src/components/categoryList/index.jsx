@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 
 import styles from "./categoryList.module.css";
-import MultiCarouselCategories from "components/multiCarouselCategories";
+import MultiCarouselCategories from "@/components/multiCarouselCategories";
 
 function CategoryList(props) {
   const { list } = props;

@@ -1,8 +1,7 @@
 import React, { memo } from "react";
-
 import styles from "./productItem.module.css";
-import { renderStars } from "helper";
-
+import { renderStars } from "@/helper";
+import Image from "next/image";
 function ProductItem(props) {
   const {
     isNew,
@@ -40,16 +39,16 @@ function ProductItem(props) {
       {/* item options */}
       <div className={styles.cover_flashsale_item_options}>
         <div className={styles.cover_flashsale_item_love}>
-          <img
-            src={require("assets/cardOptions/love.png")}
+          <Image
+            src={require("@/assets/cardOptions/love.png")}
             className="d-block w-100"
             alt="..."
           />
         </div>
 
         <div className={styles.cover_flashsale_item_love}>
-          <img
-            src={require("assets/cardOptions/view.png")}
+          <Image
+            src={require("@/assets/cardOptions/view.png")}
             className="d-block w-100"
             alt="..."
           />
@@ -59,7 +58,7 @@ function ProductItem(props) {
       {/* card header */}
       <div className={styles.cover_flashsale_head}>
         <div className={styles.cover_flashsale_image}>
-          <img src={imgSrc} className="d-block w-100" alt="..." />
+          <Image src={imgSrc} className="d-block w-100" width={150} height={150} alt="..." />
         </div>
 
         <div className={styles.cover_add_to_cart}>

@@ -1,82 +1,82 @@
 [
     {
-      "imgSrc": "static/media/ca-phone.jpg",
+      "imgSrc": "/static/media/ca-phone.jpg",
       "name": "Phones"
     },
     {
-      "imgSrc": "static/media/ca-computer.jpg",
+      "imgSrc": "/static/media/ca-computer.jpg",
       "name": "Computers"
     },
     {
-      "imgSrc": "static/media/ca-watch.jpg",
+      "imgSrc": "/static/media/ca-watch.jpg",
       "name": "SmartWatch"
     },
     {
-      "imgSrc": "static/media/ca-camera.jpg",
+      "imgSrc": "/static/media/ca-camera.jpg",
       "name": "Camera"
     },
     {
-      "imgSrc": "static/media/ca-headphone.jpg",
+      "imgSrc": "/static/media/ca-headphone.jpg",
       "name": "HeaderPhone"
     },
     {
-      "imgSrc": "static/media/ca-game.jpg",
+      "imgSrc": "/static/media/ca-game.jpg",
       "name": "Gaming"
     },
     {
-      "imgSrc": "static/media/ca-phone.jpg",
+      "imgSrc": "/static/media/ca-phone.jpg",
       "name": "Phones"
     },
     {
-      "imgSrc": "static/media/ca-computer.jpg",
+      "imgSrc": "/static/media/ca-computer.jpg",
       "name": "Computers"
     },
     {
-      "imgSrc": "static/media/ca-watch.jpg",
+      "imgSrc": "/static/media/ca-watch.jpg",
       "name": "SmartWatch"
     },
     {
-      "imgSrc": "static/media/ca-camera.jpg",
+      "imgSrc": "/static/media/ca-camera.jpg",
       "name": "Camera"
     },
     {
-      "imgSrc": "static/media/ca-phone.jpg",
+      "imgSrc": "/static/media/ca-phone.jpg",
       "name": "Phones"
     },
     {
-      "imgSrc": "static/media/ca-computer.jpg",
+      "imgSrc": "/static/media/ca-computer.jpg",
       "name": "Computers"
     },
     {
-      "imgSrc": "static/media/ca-watch.jpg",
+      "imgSrc": "/static/media/ca-watch.jpg",
       "name": "SmartWatch"
     },
     {
-      "imgSrc": "static/media/ca-camera.jpg",
+      "imgSrc": "/static/media/ca-camera.jpg",
       "name": "Camera"
     },
     {
-      "imgSrc": "static/media/ca-headphone.jpg",
+      "imgSrc": "/static/media/ca-headphone.jpg",
       "name": "HeaderPhone"
     },
     {
-      "imgSrc": "static/media/ca-game.jpg",
+      "imgSrc": "/static/media/ca-game.jpg",
       "name": "Gaming"
     },
     {
-      "imgSrc": "static/media/ca-phone.jpg",
+      "imgSrc": "/static/media/ca-phone.jpg",
       "name": "Phones"
     },
     {
-      "imgSrc": "static/media/ca-computer.jpg",
+      "imgSrc": "/static/media/ca-computer.jpg",
       "name": "Computers"
     },
     {
-      "imgSrc": "static/media/ca-watch.jpg",
+      "imgSrc": "/static/media/ca-watch.jpg",
       "name": "SmartWatch"
     },
     {
-      "imgSrc": "static/media/ca-camera.jpg",
+      "imgSrc": "/static/media/ca-camera.jpg",
       "name": "Camera"
     }
   ]

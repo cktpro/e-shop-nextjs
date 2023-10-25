@@ -69,8 +69,7 @@ function FlashSaleItem(props) {
       {/* card header */}
       <div className={styles.cover_flashsale_head}>
         <div className={styles.cover_flashsale_image}>
-          {console.log('◀◀◀imgsrc ▶▶▶',imgSrc)}
-          <Image src={`/${imgSrc}`} className="d-block w-100" width={150} height={150} alt="..." />
+          <Image src={imgSrc} className="d-block w-100" width={150} height={150} alt="..." />
         </div>
 
         <div className={styles.cover_add_to_cart}>

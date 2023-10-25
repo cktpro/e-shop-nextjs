@@ -1,7 +1,7 @@
 import React, { memo } from "react";
-
+import Image from "next/image";
 import styles from "./adv.module.css";
-import TimeAdv from "components/timeAdv";
+import TimeAdv from "@/components/timeAdv";
 
 function Adv() {
   return (
@@ -28,9 +28,11 @@ function Adv() {
         <div
           className={`col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 ${styles.cover_adv_image}`}
         >
-          <img
+          <Image
+           width={100}
+           height={100}
             className={styles.adv_image}
-            src="static/media/loa.png"
+            src="/static/media/loa.png"
             alt="..."
           />
         </div>

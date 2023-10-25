@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 
 import styles from "./timeAdv.module.css";
-import { formatNumberToString, formatTime } from "helper";
+import { formatNumberToString, formatTime } from "@/helper";
 
 function TimeAdv(props) {
   const { second } = props;

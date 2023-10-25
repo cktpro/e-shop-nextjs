@@ -1,14 +1,14 @@
-import imgSlide from "assets/images/slider/iphone14.webp";
-import logoApple from "assets/images/slider/logo-apple.svg";
+import imgSlide from "@/assets/images/slider/iphone14.webp";
+import logoApple from "@/assets/images/slider/logo-apple.svg";
+import Image from "next/image";
 import styles from "./carousel.module.scss";
-import "./carousel.scss";
 
 function Carousels(props) {
   const listDots = [0, 1, 2, 3, 4];
   return (
     <div
       id="dots"
-      className={`${styles.carousel} carousel slide`}
+      className={`${styles.carousel} ${styles.carousel} ${styles.slide}`}
       data-bs-ride="carousel"
     >
       <div className="carousel-indicators">
@@ -30,14 +30,14 @@ function Carousels(props) {
             key={dots}
             className={`carousel-item banner ${dots === 0 ? "active" : ""}`}
           >
-            <img
+            <Image
               src={imgSlide}
               className="d-block w-100 image-banner"
               alt="img banner"
             />
             <div className="content-banner">
               <div className="d-flex align-items-center">
-                <img src={logoApple} alt="logoApple" />
+                <Image src={logoApple} alt="logoApple" />
                 <div className="title">iPhone 14 Series</div>
               </div>
               <h5 className="content-heading">Up to 10% off Voucher</h5>

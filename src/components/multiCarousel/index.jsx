@@ -62,7 +62,7 @@ function MultiCarouselFlashSale(props) {
       >
         {list.map((item, index) => {
           return (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className={styles.swiper_slide}>
               <FlashSaleItem
                 discount={item.discount}
                 imgSrc={item.imgSrc}

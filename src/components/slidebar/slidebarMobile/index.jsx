@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./slidebarMobile.module.scss";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 const Category = [
   {
     id: 1,
@@ -96,7 +96,7 @@ function SlideBarMobile(props) {
         {Category.map((item, index) => {
           return (
             <div className={styles.grid_item} key={item.id}>
-              <Link>{item.name}</Link>
+              <Link href="/">{item.name}</Link>
             </div>
           );
         })}

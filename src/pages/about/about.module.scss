@@ -1,0 +1,104 @@
+
+.about_me{
+    margin-top: 3em;
+    .image_content{
+        width: 100%;
+        
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+        
+}
+.dashboard{
+    .box_dashboard{
+        border: 0.5px solid #000000;
+        text-align: center;
+        .box_icon{
+            margin: 10px auto;
+            width: 80px;
+            height: 80px;
+            background-image: url('../../assets/images/about/background_black.png');
+            img{
+                margin-top: 20px;
+                width: 40px;
+                height: 40px;
+                
+            }
+            
+        }
+
+        &:hover{
+            cursor: pointer;
+            background-color: #DB4444;
+            color: #fff;
+            .box_icon{
+                background-image: url('../../assets/images/about/background_white.png');
+                img{
+                    filter: invert(1);
+                }
+            }
+
+        }
+    }
+    
+}
+.row{
+    
+}
+.profile,.dashboard{
+    margin-top: 1.5em;
+}
+.profile{
+    margin-bottom: 1.5em;
+    .box_profile{
+        .box_img{
+            display: flex;
+            padding: 20px 20px 0px 20px;
+            justify-content: center;
+            background-color: #F5F5F5;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            img{
+                width: 300px;
+                height: 400px;
+                
+            }
+        
+
+        }
+        .name{
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 30px;
+
+        }
+        .role{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+        }
+        .name,.role{
+            margin-bottom: 10px;
+        }
+        .box_icon{
+        display: flex;
+        gap: 16px;
+        img{
+            width: 24px;
+            height: 24px;
+        }
+    }
+    }
+}
+@media only screen and (max-width: 600px)  {
+    .box_profile{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    
+
+    }
+}
+// Carousel

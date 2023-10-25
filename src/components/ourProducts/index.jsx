@@ -1,12 +1,10 @@
 import React, { memo } from "react";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./ourProducts.module.css";
-import ViewAllProductsButton from "components/button/viewAllProductsButton";
-import MultiCarouselOurProducts from "components/multiCarouselOurProducts";
+import ViewAllProductsButton from "@/components/button/viewAllProductsButton";
+import MultiCarouselOurProducts from "@/components/multiCarouselOurProducts";
 
 function OurProducts(props) {
-  const navigate = useNavigate();
 
   const { list } = props;
 

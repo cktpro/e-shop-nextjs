@@ -1,21 +1,24 @@
 import React, { memo } from "react";
 
 import styles from "./servicesMenu.module.css";
-
+import Image from "next/image";
 function ServicesMenu() {
   return (
     // bottom menu
-    <div className={`container`}>
+    <div className="container" >
       <div className={`row ${styles.custom_row_services}`}>
         <div
           className={`col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 ${styles.custom_col_services}`}
         >
           <div className={styles.cover_service_item}>
             <div className={styles.service_icon}>
-              <img
+              <Image
+              
                 className={styles.service_img}
-                src="static/media/shipping.png"
+                src="/static/media/shipping.png"
                 alt="..."
+                width={80}
+                height={80}
               />
             </div>
 
@@ -34,10 +37,12 @@ function ServicesMenu() {
         >
           <div className={styles.cover_service_item}>
             <div className={styles.service_icon}>
-              <img
+              <Image
                 className={styles.service_img}
-                src="static/media/custom.png"
+                src="/static/media/custom.png"
                 alt="..."
+                width={80}
+                height={80}
               />
             </div>
 
@@ -56,10 +61,12 @@ function ServicesMenu() {
         >
           <div className={styles.cover_service_item}>
             <div className={styles.service_icon}>
-              <img
+              <Image
                 className={styles.service_img}
-                src="static/media/sercurity.png"
+                src="/static/media/sercurity.png"
                 alt="..."
+                width={80}
+                height={80}
               />
             </div>
 

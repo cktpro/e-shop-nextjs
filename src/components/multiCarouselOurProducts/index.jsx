@@ -9,9 +9,9 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay } from "swiper/modules";
 
-import ArrowButtonCarousel from "components/button/arrowButtonCarousel";
-import "./multiCarouselOurProducts.css";
-import ProductItem from "components/productItem";
+import ArrowButtonCarousel from "@/components/button/arrowButtonCarousel";
+import styles from "./multiCarouselOurProducts.module.css";
+import ProductItem from "@/components/productItem";
 
 function MultiCarouselOurProducts(props) {
   const swiperOurPRoducts = useRef();
@@ -39,7 +39,7 @@ function MultiCarouselOurProducts(props) {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="cover_carousel_our_products"
+      className={styles.cover_carousel_our_products}
     >
       <ArrowButtonCarousel prev={handlePrev} next={handleNext} />
 
@@ -55,13 +55,13 @@ function MultiCarouselOurProducts(props) {
         // loopedSlidesLimit={false}
         // loopedSlides={1}
         modules={[Autoplay]}
-        className="swiper_flash_sale"
+        className={styles.swiper_flash_sale}
       >
         {list.map((item, index) => {
           return (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className={styles.swiper_slide}>
               <div>
-                <div className="cover_our_carousel_row">
+                <div className={styles.cover_our_carousel_row}>
                   <ProductItem
                     isNew={item.isNew}
                     discount={item.discount}

@@ -10,9 +10,9 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay } from "swiper/modules";
 
-import ArrowButtonCarousel from "components/button/arrowButtonCarousel";
-import "./multiCarouselCategories.css";
-import CategoryItem from "components/categoryItem";
+import ArrowButtonCarousel from "@/components/button/arrowButtonCarousel";
+import CategoryItem from "@/components/categoryItem";
+import styles from "./multiCarouselCategories.module.css";
 
 function MultiCarouselCategories(props) {
   const swiperCategories = useRef();
@@ -40,7 +40,7 @@ function MultiCarouselCategories(props) {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="cover_carousel_categories"
+      className={styles.cover_carousel_categories}
     >
       <ArrowButtonCarousel prev={handlePrev} next={handleNext} />
 
@@ -56,11 +56,11 @@ function MultiCarouselCategories(props) {
         // loopedSlidesLimit={false}
         // loopedSlides={1}
         modules={[Autoplay]}
-        className="swiper_categories"
+        className={styles.swiper_categories}
       >
         {list.map((item, index) => {
           return (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className={styles.swiper_slide}>
               <CategoryItem imgSrc={item.imgSrc} name={item.name} />
             </SwiperSlide>
           );
