@@ -1,19 +1,27 @@
 .custom_row {
     margin: 0;
     padding: 0;
+    
 }
 
 .custom_col {
     margin: 0;
     padding: 0;
 }
-
+.cover_img{
+    position: relative;
+    padding: 10px 10px 40px 10px;
+    background-image: url('../../assets//images//background/background1.jpg');
+}
 .cover_flashsalelist {
+    padding-top: 10px;
+    background-color: #f2f2f2;
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     height: fit-content;
     gap: 40px;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
 }
 
 .cover_today_flashsale {

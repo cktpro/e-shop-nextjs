@@ -1,3 +1,4 @@
+
 .cover_flashsale_item {
     cursor: pointer;
     position: relative;
@@ -8,7 +9,8 @@
     justify-content: center;
     width: fit-content;
     height: auto;
-    gap: 16px
+    gap: 16px;
+    
 }
 
 .cover_flashsale_head {
@@ -62,6 +64,7 @@
 }
 
 .cover_flashsale_content {
+    margin: 0 0 10px 10px;
     display: flex;
     flex-direction: column;
     width: fit-content;

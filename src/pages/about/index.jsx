@@ -52,7 +52,7 @@ function AboutPage(props) {
               <div className="pe-3">
                 <h1>Our Story</h1>
                 <p className="fs-6">
-                  Launced in 2015, Exclusive is South Asia's premier online
+                  Launced in 2015, Exclusive is South Asia&apos;s premier online
                   shopping makterplace with an active presense in Bangladesh.
                   Supported by wide range of tailored marketing, data and
                   service solutions, Exclusive has 10,500 sallers and 300 brands
@@ -76,8 +76,6 @@ function AboutPage(props) {
           </Row>
         </div>
         <div className={styles.dashboard}>
-          <Row className="p-1">
-            <Col md={6} xs={12} className={styles.row}>
               <div className={styles.box_dashboard}>
                 <div className={styles.box_icon}>
                   <Image
@@ -88,8 +86,6 @@ function AboutPage(props) {
                 <h3>10.5K</h3>
                 <p>Sallers active our site</p>
               </div>
-            </Col>
-            <Col md={6} xs={12} className={styles.row}>
               <div className={styles.box_dashboard}>
                 <div className={styles.box_icon}>
                   <Image
@@ -100,8 +96,6 @@ function AboutPage(props) {
                 <h3>10.5K</h3>
                 <p>Sallers active our site</p>
               </div>
-            </Col>
-            <Col md={6} xs={12} className={styles.row}>
               <div className={styles.box_dashboard}>
                 <div className={styles.box_icon}>
                   <Image
@@ -112,8 +106,6 @@ function AboutPage(props) {
                 <h3>10.5K</h3>
                 <p>Sallers active our site</p>
               </div>
-            </Col>
-            <Col md={6} xs={12} className={styles.row}>
               <div className={styles.box_dashboard}>
                 <div className={styles.box_icon}>
                   <Image
@@ -124,8 +116,6 @@ function AboutPage(props) {
                 <h3>10.5K</h3>
                 <p>Sallers active our site</p>
               </div>
-            </Col>
-          </Row>
         </div>
         <div className={styles.profile}>
           {/* <button onClick={handlePrev}>prev</button>
@@ -134,7 +124,7 @@ function AboutPage(props) {
             navigation={true}
             // pagination={true}
             modules={[Navigation, Pagination]}
-            spaceBetween={50}
+            spaceBetween={20}
             breakpoints={{
               // Show 1 slide when screen width less than 700px
               0: { slidesPerView: 1 },

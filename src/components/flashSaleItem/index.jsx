@@ -38,7 +38,7 @@ function FlashSaleItem(props) {
   }, []);
 
   return (
-    <div
+      <div
       onClick={handleViewProductDetails}
       className={styles.cover_flashsale_item}
     >

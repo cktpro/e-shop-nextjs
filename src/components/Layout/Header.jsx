@@ -53,10 +53,10 @@ function Header(props) {
                   <Space>
                     Ngôn ngữ
                     <span>
-                      {/* <img
-                        src={require("assets/images/icon/header/DropDown.png")}
+                      <Image
+                        src={require("@/assets/images/icon/header/DropDown.png")}
                         alt=""
-                      /> */}
+                      />
                     </span>
                   </Space>
                 </Link>
@@ -105,16 +105,16 @@ function Header(props) {
              
               <div className={styles.box_icon}>
                 {/* Wishlist icon*/}
-                <Link href="/" className={styles.wishlist}><Image
+                <Link href="/whishlist" className={styles.wishlist}><Image
                   src={require("@/assets/images/icon/header/Wishlist.png")}
-                  alt="Wishlist"
+                  alt="wishlist icon"
                 /></Link>
                 {/* Cart icon */}
-               <Link href="/">
+               <Link href="/cart">
                <Badge count={0} showZero>
                   <Image
                     src={require("@/assets/images/icon/header/Cart.png")}
-                    alt="Whishlist"
+                    alt="cart icon"
                   />
                 </Badge>
                </Link>

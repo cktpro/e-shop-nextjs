@@ -39,7 +39,7 @@ function FlashSaleList(props) {
       </div>
 
       {/* carousel flash sale products */}
-      <div className={`row ${styles.custom_row}`}>
+      <div className={`row ${styles.custom_row} ${styles.cover_img}`}>
         <MultiCarouselFlashSale list={list} />
       </div>
 
