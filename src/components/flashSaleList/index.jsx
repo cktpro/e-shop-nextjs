@@ -14,7 +14,8 @@ function FlashSaleList(props) {
   };
 
   return (
-    <div className={`container ${styles.cover_flashsalelist}`}>
+    <div className="container">
+      <div className={styles.cover_flashsalelist}>
       {/* flash sale header */}
       <div className={`row ${styles.custom_row}`}>
         {/* today flash sale */}
@@ -52,6 +53,7 @@ function FlashSaleList(props) {
       </div>
 
       <hr className={styles.hr_bottom_section} />
+    </div>
     </div>
   );
 }

@@ -32,7 +32,7 @@ function Footer(props) {
             <Col xl={4} md={8} sm={0} xs={0}>
               <h3>Account</h3>
               <p>My account</p>
-              <p>Login / Register</p>
+              {/* <p>Login / Register</p> */}
               <p>Cart</p>
               <p>Whitelist</p>
               <p>Shop</p>

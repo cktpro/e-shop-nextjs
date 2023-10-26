@@ -42,7 +42,7 @@ function BestSelling(props) {
           return (
             <div
               key={index}
-              className={`col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 ${styles.custom_col} ${styles.cover_item}`}
+              className={`col-12  col-sm-6 col-md-6 col-lg-4 col-xl-3 ${styles.custom_col} ${styles.cover_item}`}
             >
               <ProductItem
                 isNew={item.isNew}
