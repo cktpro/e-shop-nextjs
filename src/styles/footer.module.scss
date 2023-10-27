@@ -1,9 +1,13 @@
 .footer {
     max-width: 100%;
-    padding-top: 30px;
-    background-color: #000000;
+    
+    
   }
+.main_footer{
+  background-color: #000000;
+}
   .content {
+    padding: 20px 0;
     position: relative;
     color: #fff;
     h3 {
@@ -82,11 +86,13 @@
     }
   }
   .sub_footer {
-    padding-bottom: 1em;
+    padding: 10px 0;
     border-top: 1px solid #ffffff;
-    height: 40px;
     opacity: 0.4;
     text-align: center;
+    p{
+      margin: 0;
+    }
   }
   .sub_footer,
   .content {

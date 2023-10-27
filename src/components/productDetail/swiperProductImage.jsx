@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,7 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-import "./swiperProductImage.scss";
+import styles from "./swiperProductImage.module.scss";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
@@ -30,26 +31,26 @@ export default function SwiperProductImage() {
         className="mySwiper2"
       >
         <SwiperSlide>
-          <img src={require("assets/productDetail/chuotlgt.webp")} alt="..." />
+          <Image src={require("@/assets/productDetail/chuotlgt.webp")} alt="..." />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img
-            src={require("assets/productDetail/chuotlgt-nho1.webp")}
+          <Image
+            src={require("@/assets/productDetail/chuotlgt-nho1.webp")}
             alt="..."
           />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img
-            src={require("assets/productDetail/chuotlgt-nho2.webp")}
+          <Image
+            src={require("@/assets/productDetail/chuotlgt-nho2.webp")}
             alt="..."
           />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img
-            src={require("assets/productDetail/chuotlgt-nho3.webp")}
+          <Image
+            src={require("@/assets/productDetail/chuotlgt-nho3.webp")}
             alt="..."
           />
         </SwiperSlide>
@@ -67,26 +68,26 @@ export default function SwiperProductImage() {
         // direction="vertical"
       >
         <SwiperSlide>
-          <img src={require("assets/productDetail/chuotlgt.webp")} alt="..." />
+          <Image src={require("@/assets/productDetail/chuotlgt.webp")} alt="..." />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img
-            src={require("assets/productDetail/chuotlgt-nho1.webp")}
+          <Image
+            src={require("@/assets/productDetail/chuotlgt-nho1.webp")}
             alt="..."
           />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img
-            src={require("assets/productDetail/chuotlgt-nho2.webp")}
+          <Image
+            src={require("@/assets/productDetail/chuotlgt-nho2.webp")}
             alt="..."
           />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img
-            src={require("assets/productDetail/chuotlgt-nho3.webp")}
+          <Image
+            src={require("@/assets/productDetail/chuotlgt-nho3.webp")}
             alt="..."
           />
         </SwiperSlide>

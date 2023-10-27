@@ -186,6 +186,10 @@
     width: 34px;
     height: 34px;
 }
+.cover_flashsale_item_love>img{
+    width: auto;
+    height: auto;
+}
 
 .cover_flashsale_image {
     position: absolute;
@@ -194,4 +198,9 @@
     top: 35px;
     left: 40px;
     padding: 14px 9px 14px 9px;
+    
+}
+.cover_flashsale_image>img{
+    width: auto;
+    height: auto;
 }

@@ -87,7 +87,34 @@ function Carousels(props) {
         ></button>
       </div>
       <div className="carousel-inner">
-        <div className="carousel-item active" data-bs-interval="3000">
+        {carouselItem.map((item,idx)=>{
+          return <div className="carousel-item active" data-bs-interval="3000" key={idx}>
+          <div className={styles.carousel_inner}>
+            <div className="text-white d-flex flex-column gap-3">
+              <div className="d-flex gap-2 align-items-center">
+                <Image
+                  src={item.icon}
+                  width={35}
+                  height={35}
+                  alt="logo"
+                />
+                <p className="mb-0 mt-1 ">{item.name}</p>
+              </div>
+              <h2 className="ms-1 w-75 mb-0">{item.content}</h2>
+              <Link href="/" className="text-decoration-underline ms-1">
+                Shop now
+              </Link>
+            </div>
+            <Image
+              src={item.images}
+              className={styles.carousel_img}
+              alt={item.name}
+              priority
+            />
+          </div>
+          </div>
+        })}
+        {/* <div className="carousel-item active" data-bs-interval="3000">
           <div className={styles.carousel_inner}>
             <div className="text-white d-flex flex-column gap-3">
               <div className="d-flex gap-2 align-items-center">
@@ -167,7 +194,7 @@ function Carousels(props) {
               priority
             />
           </div>
-        </div>
+        </div> */}
       </div>
       <button
         className={`carousel-control-prev ${styles.carousel_control}`}

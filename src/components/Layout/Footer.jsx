@@ -1,12 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { Row, Col } from "antd";
+import ServicesMenu from '../servicesMenu';
 import styles from "@/styles/footer.module.scss";
 function Footer(props) {
     return (
         <footer className={styles.footer}>
+        {/* <ServicesMenu /> */}
       {/* Main Footer */}
+
+      <div className={styles.main_footer}>
       <div className="container">
+        
         <div className={styles.content}>
           <Row>
             <Col xl={5} md={12} sm={24} xs={24}>
@@ -93,6 +98,8 @@ function Footer(props) {
       <div className={styles.sub_footer}>
         <p>Copyright Rimel 2022. All right reserved</p>
       </div>
+      </div>
+      
     </footer>
     );
 }

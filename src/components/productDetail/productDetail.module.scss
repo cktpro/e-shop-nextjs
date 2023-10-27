@@ -306,20 +306,20 @@
 
 /* Chrome, Safari, Edge, Opera */
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    text-align: center;
-}
+// input::-webkit-outer-spin-button,
+// input::-webkit-inner-spin-button {
+//     -webkit-appearance: none;
+//     margin: 0;
+//     text-align: center;
+// }
 
 
 /* Firefox */
 
-input[type="number"] {
-    -moz-appearance: textfield;
-    text-align: center;
-}
+// input[type="number"] {
+//     -moz-appearance: textfield;
+//     text-align: center;
+// }
 
 .summation {
     cursor: pointer;

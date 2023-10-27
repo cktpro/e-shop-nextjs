@@ -1,11 +1,9 @@
 import React from 'react';
-
-function ProductDetail(props) {
+import ProductDetail from '@/components/productDetail';
+function Detail(props) {
     return (
-        <div>
-            ProductDetail
-        </div>
+        <ProductDetail/>
     );
 }
 
-export default ProductDetail;
+export default Detail;

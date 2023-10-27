@@ -1,11 +1,10 @@
 import React, { memo, useCallback, useState } from "react";
-
+import Image from "next/image";
 import styles from "./productDetail.module.scss";
 import SwiperProductImage from "./swiperProductImage";
-import { renderStars } from "helper";
-import RelatedProducts from "components/relatedProducts";
-import bestSelling from "data/bestSelling.json";
-
+import { renderStars } from "@/helper";
+import RelatedProducts from "@/components/relatedProducts";
+import bestSelling from "@/data/bestSelling.json";
 function ProductDetail() {
   const [colorSelected, setColorSelected] = useState("1");
 
@@ -238,8 +237,8 @@ function ProductDetail() {
             >
               <div className={styles.cover_quantity}>
                 <div onClick={subQuantity} className={styles.subtraction}>
-                  <img
-                    src={require("assets/productDetail/sub.png")}
+                  <Image
+                    src={require("@/assets/productDetail/sub.png")}
                     alt="..."
                   />
                 </div>
@@ -256,8 +255,8 @@ function ProductDetail() {
                 </div>
 
                 <div onClick={sumQuantity} className={styles.summation}>
-                  <img
-                    src={require("assets/productDetail/sum.png")}
+                  <Image
+                    src={require("@/assets/productDetail/sum.png")}
                     alt="..."
                   />
                 </div>
@@ -279,8 +278,8 @@ function ProductDetail() {
             >
               <div className={styles.cover_love}>
                 <div className={styles.love}>
-                  <img
-                    src={require("assets/productDetail/love.png")}
+                  <Image
+                    src={require("@/assets/productDetail/love.png")}
                     alt="..."
                   />
                 </div>
@@ -294,8 +293,8 @@ function ProductDetail() {
               <div className={styles.cover_delivery}>
                 <div className={styles.free_delivery}>
                   <div className={styles.cover_icon_delivery}>
-                    <img
-                      src={require("assets/productDetail/icon-delivery.png")}
+                    <Image
+                      src={require("@/assets/productDetail/icon-delivery.png")}
                       alt="..."
                     />
                   </div>
@@ -317,8 +316,8 @@ function ProductDetail() {
 
                 <div className={styles.free_delivery}>
                   <div className={styles.cover_icon_delivery}>
-                    <img
-                      src={require("assets/productDetail/Icon-return.png")}
+                    <Image
+                      src={require("@/assets/productDetail/Icon-return.png")}
                       alt="..."
                     />
                   </div>
