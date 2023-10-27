@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import styles from "./slidebar.module.scss";
 import Link from "next/link";
+import Carousels from "../carousel";
 const Category = [
   {
     id: 1,
@@ -46,7 +47,7 @@ const Category = [
         name: "Dell",
       },
       {
-        id: 4,
+        id: 5,
         name: "HP",
       },
     ],
@@ -94,7 +95,8 @@ function SlideBar(props) {
   }),[categoryList])
 
   return (
-      <div className={styles.slide_bar}>
+      <div className={styles.main}>
+        <div className={styles.slide_bar}>
         <ul>
           {categoryList.map((item, index) => {
             if (item.sub && item.sub.length > 0) {
@@ -140,6 +142,10 @@ function SlideBar(props) {
             );
           })}
         </ul>
+      </div>
+        <div className={styles.carousel}>
+        <Carousels/>
+        </div>
       </div>
   );
 }

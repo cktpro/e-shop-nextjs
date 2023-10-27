@@ -1,5 +1,6 @@
 import React, { memo, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./flashSaleItem.module.css";
 import { renderStars } from "@/helper";
 
@@ -34,11 +35,11 @@ function FlashSaleItem(props) {
   }, []);
 
   const handleViewProductDetails = useCallback(() => {
-    console.log('◀◀◀ CLick ▶▶▶');
+    console.log("◀◀◀ CLick ▶▶▶");
   }, []);
 
   return (
-      <div
+    <div
       onClick={handleViewProductDetails}
       className={styles.cover_flashsale_item}
     >
@@ -69,7 +70,13 @@ function FlashSaleItem(props) {
       {/* card header */}
       <div className={styles.cover_flashsale_head}>
         <div className={styles.cover_flashsale_image}>
-          <Image src={imgSrc} className="d-block w-100" width={150} height={150} alt="..." />
+          <Image
+            src={imgSrc}
+            className="d-block w-100"
+            width={150}
+            height={150}
+            alt="..."
+          />
         </div>
 
         <div className={styles.cover_add_to_cart}>
@@ -80,31 +87,33 @@ function FlashSaleItem(props) {
       </div>
 
       {/* card footer */}
-      <div className={styles.cover_flashsale_content}>
-        {/* product name */}
-        <div className={styles.flashsale_name}>{name}</div>
+      <Link href="/product/id">
+        <div className={styles.cover_flashsale_content}>
+          {/* product name */}
+          <div className={styles.flashsale_name}>{name}</div>
 
-        <div className={styles.cover_flashsale_price}>
-          {/* discounted price */}
-          <div className={styles.flashsale_discounted_price}>
-            ${discountedPrice}
+          <div className={styles.cover_flashsale_price}>
+            {/* discounted price */}
+            <div className={styles.flashsale_discounted_price}>
+              ${discountedPrice}
+            </div>
+
+            {/* price */}
+            <div className={styles.flashsale_price}>${price}</div>
           </div>
 
-          {/* price */}
-          <div className={styles.flashsale_price}>${price}</div>
+          {/* evaluate */}
+          <div className={styles.cover_flashsale_evaluate}>
+            <div className={styles.cover_flashsale_stars}>
+              {renderStars(numOfStar)}
+            </div>
+
+            <div className={styles.cover_flashsale_num_evaluate}>
+              ({numOfEvaluate})
+            </div>
+          </div>
         </div>
-
-        {/* evaluate */}
-        <div className={styles.cover_flashsale_evaluate}>
-          <div className={styles.cover_flashsale_stars}>
-            {renderStars(numOfStar)}
-          </div>
-
-          <div className={styles.cover_flashsale_num_evaluate}>
-            ({numOfEvaluate})
-          </div>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 }

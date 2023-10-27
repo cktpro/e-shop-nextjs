@@ -23,11 +23,8 @@ export default function Home() {
       <HeadMeta title="E-Shop Bán Đồ Công Nghệ Giá Siêu Tốt"/>
       <main className={`${styles.main} ${inter.className}`}>
       <section className="container">
-        <div className={styles.section1}>
           <SlideBar />
-          {/* <Carousels /> */}
           {/* <SlideBarMobile /> */}
-        </div>
       </section>
       {/* section flash sale */}
       <section className='w-100'>

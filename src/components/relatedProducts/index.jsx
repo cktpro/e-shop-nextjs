@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from "react";
 
 import styles from "./bestSelling.module.css";
-import ViewAllBestSellingButton from "components/button/viewAllBestSelling";
-import ProductItem from "components/productItem";
+import ViewAllBestSellingButton from "@/components/button/viewAllBestSelling";
+import ProductItem from "@/components/productItem";
 
 function RelatedProducts(props) {
   const { list } = props;

@@ -14,7 +14,7 @@
     background-image: url('../../assets//images//background/background1.jpg');
 }
 .cover_flashsalelist {
-    padding-top: 10px;
+    padding: 10px 10px 0 10px;
     background-color: #f2f2f2;
     margin-top: 100px;
     display: flex;

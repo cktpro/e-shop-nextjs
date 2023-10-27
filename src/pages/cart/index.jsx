@@ -6,320 +6,173 @@ import Image from "next/image";
 import styles from "./cart.module.scss";
 import HeadMeta from "@/components/HeadMeta";
 // import { Checkbox } from "antd";
-
+const fakeItem = [
+  {
+    id: 1,
+    name: "LCD Monitor",
+    image: require("@/assets/images/cart/monitor.png"),
+    price: 650,
+    quantity: 10,
+    discount: 5,
+  },
+  {
+    id: 2,
+    name: "Hi Gamepad",
+    image: require("@/assets/images/cart/gamePad.png"),
+    price: 550,
+    quantity: 2,
+    discount: 4,
+  },
+];
 function Cart(props) {
-  const [quantity, setQuantity] = useState(1);
-  const subQuantity = useCallback(() => {
-    if (quantity <= 0) {
-      return;
-    }
-    setQuantity((quantity) => quantity - 1);
-  }, [quantity]);
+  let total=0
+  const [product,setProduct]=useState(fakeItem)
+  const [selected,setSelected]=useState([])
+  const formSubmit =(event)=>{
+    event.preventDefault()
+    console.log('◀◀◀ check ▶▶▶',product);
+    console.log('◀◀◀ selected ▶▶▶',selected);
 
-  const sumQuantity = useCallback(() => {
-    setQuantity((quantity) => quantity + 1);
-  }, []);
-
-  const handleChangeQuantity = useCallback((e) => {
-    if (!e.target.value) {
-      setQuantity(0);
-      return;
-    }
-    setQuantity(parseInt(e.target.value));
-  }, []);
-
-  const [value, setValue] = useState(1);
+  }
+const handleChecked=(e,item)=>{
+  if(e.target.checked)
+  setSelected((prev)=>[...prev,item])
+}
+const deleteItem=useCallback((index)=>{
+  const newProduct=product
+  newProduct.splice(index,1)
+  setProduct([...newProduct])
+  console.log('◀◀◀ index ▶▶▶',newProduct);
+},[product])
+const handleChange=useCallback((e,index)=>{
+  const newProduct=product
+  newProduct[index].quantity= e.target.value
+  setProduct(newProduct)
+},[product])
   return (
     <>
-    <HeadMeta title="Cart" />
-    <div className={`container`}>
-      {/* header link  */}
-      <div className={`row ${styles.custom_row} ${styles.row_header_link}`}>
-        <div className={`col-12 ${styles.custom_col}`}>
-          <div className={styles.header_link}>
-            <div className={styles.parent_link}>
-              <Link href="/" >Home /</Link>
-            </div>
-            <div className={styles.children_link}>
-              <Link href="/" >Cart</Link>
+      <HeadMeta title="Cart" />
+      <div className={`container`}>
+        {/* header link  */}
+        <div className={`row ${styles.custom_row} ${styles.row_header_link}`}>
+          <div className={`col-12 ${styles.custom_col}`}>
+            <div className={styles.header_link}>
+              <div className={styles.parent_link}>
+                <Link href="/">Home /</Link>
+              </div>
+              <div className={styles.children_link}>
+                <Link href="/">Cart</Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.block_cart}>
-        {/* Shopping Detail Cart  */}
-        <div className={"container1 my-5"}>
-          {/* Category */}
-          <div className={`row ${styles.custom_row} ${styles.row_category}`}>
-            <div className={`col-1 ${styles.custom_col}`}>
-              <div className={styles.category_checkbox}>
-                <input
-                  type="checkbox"
-                  id="vehicle1"
-                  name="vehicle1"
-                  value="Bike"
-                  style={{ height: 21, width: 21 }}
-                />
-              </div>
-            </div>
-            <div className={`col-4  ${styles.custom_col}`}>
-              <div className={styles.category_product}>Product</div>
-            </div>
-
-            <div className={`col-2 ${styles.custom_col}`}>
-              <div className={styles.category_price}>Price</div>
-            </div>
-
-            <div className={`col-2 ${styles.custom_col}`}>
-              <div className={styles.category_quantity}>Quantity</div>
-            </div>
-
-            <div className={`col-2 ${styles.custom_col}`}>
-              <div className={styles.category_subtotal}>Subtotal</div>
-            </div>
-
-            <div className={`col-1 ${styles.custom_col}`}>
-              <div className={styles.category_operate}>operate</div>
-            </div>
-          </div>
-          <br />
-
-          {/* Detail Product to Cart */}
-          <div className={`row ${styles.custom_row} ${styles.row_detail_cart}`}>
-            <div className={`col-1 ${styles.custom_col}`}>
-              <div className={styles.detail_checkbox}>
-                <input
-                  type="checkbox"
-                  id="vehicle1"
-                  name="vehicle1"
-                  value="Bike"
-                  style={{ height: 21, width: 21 }}
-                />
-              </div>
-            </div>
-
-            <div className={`col-4  ${styles.custom_col}`}>
-              <div className={styles.detail_product}>
-                <div className="d-flex center">
-                  <Image
-                    src={require("@/assets/images/cart/monitor.png")}
-                    alt="..."
-                    width={54}
-                    height={54}
-                  />
-                  <div className="mx-2 my-3">LCD Monitor</div>
-                </div>
-              </div>
-            </div>
-
-            <div className={`col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2  ${styles.custom_col}`}>
-              <div className={styles.detail_price}>$650</div>
-            </div>
-
-            {/* Quantity - Cart  */}
-
-            <div
-              className={`col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 ${styles.custom_col} ${styles.custom_col_detail_cart}`}
-            >
-              <div className={styles.cover_quantity}>
-                <div onClick={subQuantity} className={styles.subtraction}>
-                  <Image
-                    src={require("@/assets/productDetail/sub.png")}
-                    alt="..."
-                  />
-                </div>
-                <div>
-                  <input
-                    className={`${styles.quantity_input} ${styles.no_arrow_input}`}
-                    type="number"
-                    required
-                    // value={quantity || 0}
-                    value={quantity !== 0 ? parseInt(quantity).toString() : "0"}
-                    onChange={handleChangeQuantity}
-                    // max={100}
-                    // min={1}
-                  />
-                </div>
-
-                <div onClick={sumQuantity} className={styles.summation}>
-                  <Image
-                    src={require("@/assets/productDetail/sum.png")}
-                    alt="..."
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className={`col-sm-2 ${styles.custom_col}`}>
-              <div className={styles.detail_subtotal}>$650</div>
-            </div>
-
-            <div className={`col-1 ${styles.custom_col}`}>
-              <div className={styles.detail_operation}>
-                <button className="btn btn-danger  ">Delete</button>
-              </div>
-            </div>
+        <div className={styles.block_cart}>
+          {/* Shopping Detail Cart  */}
+          <form name="form" onSubmit={formSubmit}>
+          <table className={`table text-center ${styles.cart_table}`}>
+            <thead>
+              <tr>
+                <th scope="col">
+                  <input type="checkbox"  />
+                </th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody >
+              {
+                product.map((item,index)=>{
+                 total += item.price * (100 - item.discount) / 100
+                  return <tr key={index} >
+                    <td><input type="checkbox" onChange={(e)=>handleChecked(e,item)}/></td>
+                    <td ><Image src={item.image} alt={item.name} width={50} height={50} />{item.name}</td>
+                    <td>${item.price}</td>
+                    <td><input className={styles.cart_input} name="quantity" type="number" defaultValue={item.quantity} onChange={(e)=>handleChange(e,index)} /></td>
+                    <td ><span className="badge bg-success">{item.discount}%</span></td>
+                    <td>${item.price * (100 - item.discount) / 100}</td>
+                    <td><button type="button" onClick={()=>deleteItem(index)} className="btn btn-danger">Delete</button></td>
+                  </tr>
+                })
+              }
+            </tbody>
+          </table>
+          <div
+            className={`d-flex justify-content-between`}
+          >
+           <button
+                  type="button"
+                  onClick={() => {
+                    window.history.back();
+                  }}
+                  className="btn btn-outline-dark style"
+                >
+                  Return To Shop
+                </button>
+                <button
+                  type="submit"
+                  className="btn btn-outline-dark style"
+                >
+                 Update Cart
+                </button>
           </div>
           {/* <hr  width="90%"/> */}
-          <br />
-
-          {/* Detail Product to Cart */}
-          <div className={`row ${styles.custom_row} ${styles.row_detail_cart}`}>
-            <div className={`col-1 ${styles.custom_col}`}>
-              <div className={styles.detail_checkbox}>
-                <input
-                  type="checkbox"
-                  id="vehicle1"
-                  name="vehicle1"
-                  value="Bike"
-                  style={{ height: 21, width: 21 }}
-                />
-              </div>
-            </div>
-
-            <div className={`col-4  ${styles.custom_col}`}>
-              <div className={styles.detail_product}>
-                <div className="d-flex center">
-                  <Image
-                    src={require("@/assets/images/cart/gamePad.png")}
-                    alt="..."
-                    width={54}
-                    height={54}
-                  />
-                  <div className="mx-2 my-3">GamePad</div>
-                </div>
-              </div>
-            </div>
-
-            <div className={`col-2 ${styles.custom_col}`}>
-              <div className={styles.detail_price}>$650</div>
-            </div>
-
-            {/* Quantity - Cart  */}
-
-            <div
-              className={`col-2  ${styles.custom_col} ${styles.custom_col_detail_cart}`}
-            >
-              <div className={styles.cover_quantity}>
-                <div onClick={subQuantity} className={styles.subtraction}>
-                  <Image
-                    src={require("@/assets/productDetail/sub.png")}
-                    alt="..."
-                  />
-                </div>
-                <div>
-                  <input
-                    className={`${styles.quantity_input} ${styles.no_arrow_input}`}
-                    type="number"
-                    required
-                    // value={quantity || 0}
-                    value={quantity !== 0 ? parseInt(quantity).toString() : "0"}
-                    onChange={handleChangeQuantity}
-                    // max={100}
-                    // min={1}
-                  />
-                </div>
-
-                <div onClick={sumQuantity} className={styles.summation}>
-                  <Image
-                    src={require("@/assets/productDetail/sum.png")}
-                    alt="..."
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className={`col-sm-2 ${styles.custom_col}`}>
-              <div className={styles.detail_subtotal}>$650</div>
-            </div>
-
-            <div className={`col-1 ${styles.custom_col}`}>
-              <div className={styles.detail_operation}>
-                <button className="btn btn-danger  ">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br />
-
-        <div
-          className={`row d-flex justify-content-between ${styles.custom_row} ${styles.row_return_update}`}
-        >
-          <div
-            className={`col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 ${styles.custom_col}`}
-          >
-            <div className={styles.return}>
-              <button type="button" onClick={()=>{window.history.back()}} className="btn btn-outline-danger style">
-                Return To Shop
-              </button>
-            </div> 
-          </div>
-          <div
-            className={` col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 ${styles.custom_col}`}
-          >
-            <div className={styles.update}>
+</form>
+          <div className="d-flex justify-content-between my-4">
+            <div className="d-flex justify-content-around gap-lg-3">
+              <input
+                type="text"
+                className="form-control border-1 border-dark w-100"
+                placeholder="Coupon Code"
+                style={{ height: 56, width: 300 }}
+              />
               <button
-                type="button"
-                className="  btn btn-outline-danger style"
-                // style={{ height: 56, width: 218 }}
+                className="btn btn-danger w-90"
+                style={{ height: 56, width: 211, borderRadius: 4 }}
               >
-                Update Cart
+                Apply Coupon
               </button>
             </div>
-          </div>
-        </div>
-        {/* <hr  width="90%"/> */}
 
-        <div className="d-flex justify-content-between my-4">
-          <div className="d-flex justify-content-around gap-lg-3">
-            <input
-              type="text"
-              className="form-control border-1 border-dark w-100"
-              placeholder="Coupon Code"
-              style={{ height: 56, width: 300 }}
-            />
-            <button
-              className="btn btn-danger w-90"
-              style={{ height: 56, width: 211, borderRadius: 4 }}
+            <span
+              className="border border-dark  "
+              style={{ height: 324, width: 470, margin: "top" }}
             >
-              Apply Coupon
-            </button>
+              <div className="container mt-3">
+                <h5 className="text" width={100} height={28}>
+                  Cart Total
+                </h5>
+                <div className="d-flex justify-content-between my-4 ">
+                  <p>Subtotal:</p>
+                  <p>${total}</p>
+                </div>
+                <hr width="99%" color="black" size="1px" />
+                <div className="d-flex justify-content-between">
+                  <p>Shiping:</p>
+                  <p ><span className="badge bg-info">Free</span></p>
+                </div>
+                <hr width="99%" color="black" size="1px" />
+                <div className="d-flex justify-content-between">
+                  <p>Total:</p>
+                  <p>${total}</p>
+                </div>
+
+                <div className="d-flex justify-content-around">
+                  <Link href="/checkout">
+                    <button className="btn btn-danger ">
+                      Process Checkout
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </span>
           </div>
-
-          <span
-            className="border border-dark  "
-            style={{ height: 324, width: 470, margin: "top" }}
-          >
-            <div className="container mt-3">
-              <h5 className="text" width={100} height={28}>
-                Cart Total
-              </h5>
-              <div className="d-flex justify-content-between my-4 ">
-                <p>Subtotal:</p>
-                <p>1750$</p>
-              </div>
-              <hr width="99%" color="black" size="1px" />
-              <div className="d-flex justify-content-between">
-                <p>Shiping:</p>
-                <p>Free</p>
-              </div>
-              <hr width="99%" color="black" size="1px" />
-              <div className="d-flex justify-content-between">
-                <p>Total:</p>
-                <p>1750$</p>
-              </div>
-
-              <div className="d-flex justify-content-around">
-                <Link href="/" >
-                  <button className="btn btn-danger ">Process Checkout</button>
-                </Link>
-              </div>
-            </div>
-          </span>
         </div>
       </div>
-    </div>
     </>
   );
 }

@@ -1,31 +1,31 @@
 import React from "react";
 import styles from "./checkout.module.scss";
-import gamepad from "assets/product/gamePad.png";
-import laptop from "assets/product/laptop.png";
-import visa from "assets/images/payment-method/Visa.wine.svg";
-import bkash from "assets/images/payment-method/Bkash.wine.svg";
-import nagad from "assets/images/payment-method/Nagad.wine.svg";
-import master_card from "assets/images/payment-method/Mastercard.wine.svg";
-
-
+import gamepad from "@/assets/product/gamePad.png";
+import laptop from "@/assets/product/laptop.png";
+import visa from "@/assets/images/payment-method/Visa.wine.svg";
+import bkash from "@/assets/images/payment-method/Bkash.wine.svg";
+import nagad from "@/assets/images/payment-method/Nagad.wine.svg";
+import master_card from "@/assets/images/payment-method/Mastercard.wine.svg";
+import Link from "next/link";
+import Image from "next/image";
 
 function Checkout(props) {
   return (
     <div className="container mb-5">
       {/* header link */}
       <div className="d-flex my-5 text-black-50 form-text">
-        <a href="/account">Account</a>
+        <Link href="/account">Account</Link>
         <span className="mx-2">/</span>
-        <a href="/my-account">My Account</a>
+        <Link href="/my-account">My Account</Link>
         <span className="mx-2">/</span>
-        <a href="/product">Product</a>
+        <Link href="/product">Product</Link>
         <span className="mx-2">/</span>
-        <a href="/cart">View Cart</a>
+        <Link href="/cart">View Cart</Link>
         <span className="mx-2">/</span>
         {/* active text-body */}
-        <a href="/cart-checkout" className="text-body">
+        <Link href="/cart-checkout" className="text-body">
           CheckOut
-        </a>
+        </Link>
       </div>
       <h1 className="mb-5">Billing Details</h1>
 
@@ -88,7 +88,7 @@ function Checkout(props) {
                 <input
                   className={`form-check-input fs-5 text mt-0 ${styles.checkbox}`}
                   type="checkbox"
-                  value=""
+                  name="checkbox"
                   id="save_info"
                   style={{ marginLeft: "-1.5rem" }}
                 />
@@ -105,14 +105,14 @@ function Checkout(props) {
               <div className="row g-3">
                 <div className="col-12 col-lg-10 d-flex justify-content-between align-items-center p-2">
                   <div className="d-flex align-items-center">
-                    <img src={gamepad} alt="gamepad" width={50} height="auto" />
+                    <Image src={gamepad} alt="gamepad" width={50} height="auto" />
                     <div className="mx-2">LCD Monitor</div>
                   </div>
                   <label>$650</label>
                 </div>
                 <div className="col-12 col-lg-10 d-flex justify-content-between align-items-center p-2">
                   <div className="d-flex align-items-center">
-                    <img src={laptop} alt="laptop" width={50} height="auto" />
+                    <Image src={laptop} alt="laptop" width={50} height="auto" />
                     <div className="mx-2">H1 GamePad</div>
                   </div>
                   <label>$1100</label>
@@ -137,7 +137,7 @@ function Checkout(props) {
                   <div className="d-flex align-items-center">
                     <div className="form-check d-flex align-items-center">
                       <input
-                        className={`form-check-input fs-5 text mt-0 ${styles.check_input}`}
+                        className={`form-check-input fs-5 text mt-0 ${styles.radio}`}
                         type="radio"
                         name="payment_method"
                         id="payment_method_1"
@@ -152,15 +152,15 @@ function Checkout(props) {
                     </div>
                   </div>
                   <div className="d-flex align-items-center">
-                    <img src={bkash} alt="bkash" width={40} height={40} />
-                    <img src={visa} alt="visa" width={40} height={40} />
-                    <img
+                    <Image src={bkash} alt="bkash" width={40} height={40} />
+                    <Image src={visa} alt="visa" width={40} height={40} />
+                    <Image
                       src={master_card}
                       alt="master_card"
                       width={40}
                       height={40}
                     />
-                    <img src={nagad} alt="nagad" width={40} height={40} />
+                    <Image src={nagad} alt="nagad" width={40} height={40} />
                   </div>
                 </div>
                 <div className="col-12 col-md-10 d-flex justify-content-between align-items-center py-1 px-2 g-1">
@@ -172,7 +172,8 @@ function Checkout(props) {
                         name="payment_method"
                         id="payment_method_2"
                         style={{ marginLeft: "-1.5rem" }}
-                        checked
+                        defaultChecked
+                       
                       />
                       <label
                         className="form-check-label mx-2"
