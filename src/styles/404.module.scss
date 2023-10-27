@@ -1,0 +1,64 @@
+.main_404 {
+  margin: 5em 0;
+  //   height: 600px;
+  .img1 {
+    //     margin-left: 25px;
+    //   margin-top: 216px;
+    -webkit-animation: swinging 1s ease-in-out infinite alternate;
+    -moz-animation: swinging 1s ease-in-out infinite alternate;
+    -o-animation: swinging 1s ease-in-out infinite alternate;
+    animation: swinging 1s ease-in-out infinite alternate;
+    -webkit-transform-origin: 90% 10px;
+    -moz-transform-origin: 75% -40px;
+    -o-transform-origin: 75% -40px;
+    transform-origin: 75% -40px;
+  }
+  .img2 {
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+  }
+}
+@-webkit-keyframes swinging {
+  from {
+    -webkit-transform: rotate(-7deg);
+  }
+  to {
+    -webkit-transform: rotate(7deg);
+  }
+}
+@-moz-keyframes swinging {
+  from {
+    -moz-transform: rotate(-7deg);
+  }
+  to {
+    -moz-transform: rotate(7deg);
+  }
+}
+@-o-keyframes swinging {
+  from {
+    -o-transform: rotate(-7deg);
+  }
+  to {
+    -o-transform: rotate(7deg);
+  }
+}
+@keyframes swinging {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(7deg);
+  }
+}
+@media only screen and (max-width: 800px) {
+  .main_404 {
+    margin: 2em 0 ;
+    .img1 {
+      margin-bottom: 1em;
+    }
+    .img2 {
+      margin-top: 0 !important;
+    }
+  }
+}

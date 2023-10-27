@@ -1,0 +1,70 @@
+[{"id":1,
+    "discounted": 30,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  },
+  {"id":2,
+    "discounted": 30,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "10"
+  }
+  ,
+  {"id":3,
+    "discounted": 5,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  }
+  ,
+  {"id":4,
+    "discounted": 5,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  }
+  ,
+  {"id":5,
+    "discounted": 5,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  }
+  ,
+  {"id":2,
+    "discounted": 30,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "10"
+  }
+  ,
+  {"id":3,
+    "discounted": 5,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  }
+  ,
+  {"id":4,
+    "discounted": 5,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  }
+  ,
+  {"id":5,
+    "discounted": 5,
+    "image": "https://i.pinimg.com/236x/a4/f7/d2/a4f7d2a8d5f4c9197f60be5c20afc58c.jpg",
+    "productName": "tivi",
+    "newPrice": "20",
+    "oldPrice": "25"
+  }]
