@@ -1,0 +1,93 @@
+.whishlist{
+    margin: 5em 0;
+}
+// Card
+.card{
+    margin-left: auto;
+    margin-right: auto;
+    width: 275px;
+    .card_img{
+        position: relative;
+        height: 250px;
+        background-color: #ebebeb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        padding-bottom: 1.5em;
+        img{
+            width: 190px;
+            height: 170px;
+            object-fit: fill;
+        }
+        .content_sale{
+            position: absolute;
+            z-index: 9;
+            top:12px;
+            left: 12px;
+            background-color: #DB4444;
+            padding: 4px 12px;
+            border-radius: 4px;
+
+        }
+        .btn_top_right{
+            z-index: 9;
+            width: 34px;
+            height: 34px;
+            position: absolute;
+            top:8px;
+            right: 8px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: none;
+            img{
+                width: 24px;
+                height: 24px;
+            }
+            &:hover{
+                scale: 1.1;
+            }
+
+        }
+        .btn_add_cart{
+            z-index: 9;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: black;
+            border-radius:  0 0 4px 4px;
+            height: 40px;
+            img{
+                width: 24px;
+                height: 24px;
+                filter: invert(1);
+                vertical-align: middle;
+            }
+        }
+        .content_sale,.btn_add_cart{
+            color: #fff;
+        }
+        // &:hover{
+        //     .btn_add_cart{
+        //         display: block !important;
+        //     }
+        // }
+    }
+    .card_content{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}
+@media screen and (min-width:580px) and (max-width:800px)  {
+    .card{
+        width: 240px !important;
+    }
+    
+}
