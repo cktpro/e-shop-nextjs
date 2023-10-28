@@ -77,7 +77,7 @@ function WhishList(props) {
         <div className="container">
           {/* Whishlist */}
           <div className="d-flex justify-content-between">
-            <h4>Whishlist(4)</h4>
+            <h4 className="m-0">Whishlist(4)</h4>
             <button className="btn btn-outline-dark">Move All To Bag</button>
           </div>
           {/* Card */}

@@ -1,0 +1,66 @@
+.main_login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5em 0;
+  gap: 40px;
+}
+.login_image{
+  order: 0;
+  img{
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    object-fit: contain;
+  }
+
+}
+.login_content{
+  min-width: 280px;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.google_logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+  }
+  
+  .google_signin_button {
+    background-color: white;
+    color: black;
+    border-color: rgb(145, 140, 140) 0.5;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 300px;
+    align-items: center;
+  
+  }
+  
+  .forget_password {
+    color: red;
+    margin-left: 100px;
+    margin-top: 200px;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .main_login{
+      flex-direction: column;
+      margin: 5em 0;
+      gap: 40px;
+    }
+    .login_content{
+      order: 0;
+    }
+    .login_image{
+      order: 1;
+    }
+  }
+    

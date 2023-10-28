@@ -29,8 +29,8 @@ function Adv() {
           className={`col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 ${styles.cover_adv_image}`}
         >
           <Image
-           width={100}
-           height={100}
+           width={400}
+           height={300}
             className={styles.adv_image}
             src="/static/media/loa.png"
             alt="..."
