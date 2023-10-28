@@ -111,7 +111,7 @@ function Header(props) {
                 /></Link>
                 {/* Cart icon */}
                <Link href="/cart">
-               <Badge count={0} showZero>
+               <Badge count={2} showZero>
                   <Image
                     src={require("@/assets/images/icon/header/Cart.png")}
                     alt="cart icon"
