@@ -85,7 +85,7 @@ function Header(props) {
               <li><Link href="/" >Home</Link></li>
               <li><Link href="/contract" >Contract</Link></li>
               <li><Link href="/about" >About</Link></li>
-              <li className={styles.li_pc}><Link href="/signup">Sign Up</Link></li>
+              <li className={styles.li_pc}><Link href="/auth/register">Sign Up</Link></li>
               <li className={styles.li_mobile}><Link href="/whishlist" >Whishlist</Link></li>
               </ul>
               <ul className={styles.account}>

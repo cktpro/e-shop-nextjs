@@ -56,7 +56,7 @@ function Form(props) {
             <form name="formLogin" className="d-flex flex-column gap-4">
               <div className="d-flex flex-column gap-2">
                 <input
-                  className="form-control form-control-sm"
+                  className="form-control "
                   placeholder="Email "
                   aria-label="Email "
                   type="email"
@@ -85,7 +85,7 @@ function Form(props) {
 
               <div className="">
                 <input
-                  className="form-control form-control-sm"
+                  className="form-control "
                   placeholder="Password"
                   aria-label="Password"
                   type="password"
@@ -117,7 +117,7 @@ function Form(props) {
               <div className="col">
                 <button
                   type="submit"
-                  className="btn btn-danger"
+                  className="btn btn-danger px-3"
                   onClick={validationLogin.submitForm}
                 >
                   Login
@@ -129,9 +129,9 @@ function Form(props) {
               </div>
             </div>
             <div className="text-center">
-              Already have an account?{" "}
+              Already have not account?{" "}
               <Link href="/login" className="text-primary">
-                Login
+                Sign up
               </Link>
             </div>
           </div>
