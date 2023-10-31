@@ -1,14 +1,21 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 import googleLogo from "@/assets/images/form/googlelogo.png";
 import form from "@/assets/images/form/form.png";
 import styles from "./styles/login.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import HeadMeta from "@/components/HeadMeta";
-
+import { useDispatch, useSelector } from "react-redux";
+import { actionLogin, actionGetMyProfile } from "@/redux-store/account/action";
+import axios from "axios";
+import { useRouter } from "next/router";
 function Form(props) {
+  const dispatch = useDispatch();
+  const route = useRouter();
+
+  const account = useSelector((state) => state.accountReducer);
   const validationLogin = useFormik({
     initialValues: {
       email: "",
@@ -23,7 +30,7 @@ function Form(props) {
         .required("Vui lòng nhập mật khẩu"),
     }),
     onSubmit: (values) => {
-      console.log("◀◀◀ values ▶▶▶", values);
+      dispatch(actionLogin(values));
       //   const { password, confirmPassword } = values;
       //   const data = {
       //     password,
@@ -38,7 +45,11 @@ function Form(props) {
       // Xử lý logic đăng nhập ở đây
     },
   });
-
+  if(account.isLogin===true){
+    setTimeout(() => {
+      route.push("/");
+    }, 2000);
+  }
   return (
     <>
       <HeadMeta title="Login" />
@@ -50,13 +61,28 @@ function Form(props) {
 
           <div className={styles.login_content}>
             <div className="d-flex flex-column gap-3">
+              {account.isLogin === true && account.isLoading === false && (
+                <div className="alert alert-success" role="alert">
+                  Đăng nhập thành công
+                </div>
+              )}
+              {account.isLoading === true && (
+                <div className="alert alert-info" role="alert">
+                  Vui lòng chờ
+                </div>
+              )}
+              {account.isLogin === false && account.isLoading === false && (
+                <div className="alert alert-danger" role="alert">
+                  Đăng nhập thất bại
+                </div>
+              )}
               <h1 className="m-0">Login to E-Shop</h1>
               <h6 className="m-0">Enter your details below</h6>
             </div>
             <form name="formLogin" className="d-flex flex-column gap-4">
               <div className="d-flex flex-column gap-2">
                 <input
-                  className="form-control form-control-sm"
+                  className="form-control "
                   placeholder="Email "
                   aria-label="Email "
                   type="email"
@@ -85,7 +111,7 @@ function Form(props) {
 
               <div className="">
                 <input
-                  className="form-control form-control-sm"
+                  className="form-control "
                   placeholder="Password"
                   aria-label="Password"
                   type="password"
@@ -117,7 +143,7 @@ function Form(props) {
               <div className="col">
                 <button
                   type="submit"
-                  className="btn btn-danger"
+                  className="btn btn-danger px-3"
                   onClick={validationLogin.submitForm}
                 >
                   Login
@@ -129,9 +155,9 @@ function Form(props) {
               </div>
             </div>
             <div className="text-center">
-              Already have an account?{" "}
+              Already have not account?{" "}
               <Link href="/login" className="text-primary">
-                Login
+                Sign up
               </Link>
             </div>
           </div>

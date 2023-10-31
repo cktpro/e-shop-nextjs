@@ -90,7 +90,7 @@ const handleChange=useCallback((e,index)=>{
                  total += item.price * (100 - item.discount) / 100
                   return <tr key={index} >
                     <td><input type="checkbox" onChange={(e)=>handleChecked(e,item)}/></td>
-                    <td ><Image src={item.image} alt={item.name} width={50} height={50} />{item.name}</td>
+                    <td ><Image src={item.image} alt={item.name} width={80} height={80} /><span className="ms-2">{item.name}</span></td>
                     <td>${item.price}</td>
                     <td><input className={styles.cart_input} name="quantity" type="number" defaultValue={item.quantity} onChange={(e)=>handleChange(e,index)} /></td>
                     <td ><span className="badge bg-success">{item.discount}%</span></td>

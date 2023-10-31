@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./checkout.module.scss";
 import gamepad from "@/assets/product/gamePad.png";
 import laptop from "@/assets/product/laptop.png";
@@ -8,8 +8,63 @@ import nagad from "@/assets/images/payment-method/Nagad.wine.svg";
 import master_card from "@/assets/images/payment-method/Mastercard.wine.svg";
 import Link from "next/link";
 import Image from "next/image";
-
+import axios from "axios";
+import { headers } from "../../../next.config";
 function Checkout(props) {
+  const[province,setProvince]=useState([])
+  const[distric,setDistric]=useState([])
+  const[ward,setWard]=useState([])
+  const getProvince= async()=>{
+    try {
+      axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
+      const res = await axios.get("https://online-gateway.ghn.vn/shiip/public-api/master-data/province")
+      setProvince(res.data.data)
+    } catch (error) {
+      console.log('◀◀◀ error ▶▶▶',error);
+    }
+  }
+  const getDistric= async(provinceId)=>{
+    console.log('◀◀◀ provinceId ▶▶▶',provinceId);
+    try {
+      const data={
+        'province_id':parseInt(provinceId)
+      }
+      // axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
+      const res = await axios.post("https://online-gateway.ghn.vn/shiip/public-api/master-data/district",data)
+      setDistric(res.data.data)
+    } catch (error) {
+      console.log('◀◀◀ error ▶▶▶',error);
+    }
+  }
+  const getWard= async(districId)=>{
+    try {
+      const data={
+        'district_id':parseInt(districId)
+      }
+      // axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
+      const res = await axios.post("https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id",data)
+      setWard(res.data.data)
+    } catch (error) {
+      console.log('◀◀◀ error ▶▶▶',error);
+    }
+  }
+  const getFeeShip= async()=>{
+    try {
+      const data={
+        'district_id':parseInt(districId)
+      }
+      // axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
+      const res = await axios.post("https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id",data)
+      setWard(res.data.data)
+    } catch (error) {
+      console.log('◀◀◀ error ▶▶▶',error);
+    }
+  }
+
+ useEffect(()=>{
+  getProvince();
+ },[])
+  
   return (
     <div className="container mb-5">
       {/* header link */}
@@ -61,6 +116,42 @@ function Checkout(props) {
                 Apartment, floor, etc. (optional)
               </label>
               <input type="text" className={`form-control ${styles.input_info}`} id="apartment" />
+            </div>
+            <div className="col-12 col-lg-10">
+              <label htmlFor="apartment" className="form-label text-black-50">
+                Tỉnh/Thành Phố
+              </label>
+              <select className={`form-control ${styles.input_info}`} onChange={(e)=>getDistric(e.target.value)} name="province" >
+                {
+                  province.map((item,idx)=>{
+                    return <option value={item.ProvinceID}  key={idx}  >{item.ProvinceName} </option>
+                  })
+                }
+              </select>
+            </div>
+            <div className="col-12 col-lg-10">
+              <label htmlFor="apartment" className="form-label text-black-50">
+                Quận/Huyện
+              </label>
+              <select className={`form-control ${styles.input_info}`} onChange={(e)=>getWard(e.target.value)} name="distric" >
+                {
+                  distric.map((item,idx)=>{
+                    return <option value={item.DistrictID}  key={idx}  >{item.DistrictName} </option>
+                  })
+                }
+              </select>
+            </div>
+            <div className="col-12 col-lg-10">
+              <label htmlFor="apartment" className="form-label text-black-50">
+                Phường/Xã
+              </label>
+              <select className={`form-control ${styles.input_info}`}  name="distric" >
+                {
+                  ward.map((item,idx)=>{
+                    return <option value={item.WardCode}  key={idx}  >{item.WardName} </option>
+                  })
+                }
+              </select>
             </div>
             <div className="col-12 col-lg-10">
               <label htmlFor="town_city" className={`form-label text-black-50 ${styles.required}`}>

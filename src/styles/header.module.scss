@@ -66,6 +66,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      .account{
+        list-style: none;
+      }
       .li_mobile,.account{
         display: none;
       }
