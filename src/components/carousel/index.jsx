@@ -100,7 +100,7 @@ function Carousels(props) {
                 />
                 <p className="mb-0 mt-1 ">{item.name}</p>
               </div>
-              <h2 className="ms-1 w-75 mb-0">{item.content}</h2>
+              <h3 className="ms-1 w-75 mb-0">{item.content}</h3>
               <Link href="/" className="text-decoration-underline ms-1">
                 Shop now
               </Link>

@@ -74,6 +74,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .carousel{
+    border-left: none !important; 
+  }
   .slide_bar {
     display: none;
   }
