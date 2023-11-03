@@ -71,6 +71,7 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+  
   }
 }
 
@@ -83,6 +84,28 @@
 html,
 body {
   max-width: 100vw;
+  /* Config fontsize */
+  font-size: 12px;
+
+  @media (min-width: 640px) {
+    font-size: 12px
+  };
+
+  @media (min-width: 768px) {
+    font-size: 14px
+  };
+  
+  @media (min-width: 1024px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1536px) {
+    font-size: 16px;
+  }
   
 }
 

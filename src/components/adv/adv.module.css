@@ -45,11 +45,11 @@
 }
 
 .adv_category {
-    width: 90px;
-    height: 20px;
-    font-size: 16px;
+    width: 5.625rem;
+    height: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
-    line-height: 20px;
+    line-height: 1.25rem;
     letter-spacing: 0em;
     text-align: left;
     color: #00FF66;
@@ -57,10 +57,10 @@
 
 .adv_title {
     width: fit-content;
-    height: 140px;
-    font-size: 48px;
+    height: 8.75rem;
+    font-size: 3rem;
     font-weight: 600;
-    line-height: 60px;
+    line-height: 3.75rem;
     letter-spacing: 0.04em;
     text-align: left;
     color: #FAFAFA;
@@ -157,14 +157,14 @@
     justify-content: center;
     width: 171px;
     height: 56px;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     gap: 10px;
     background-color: #00FF66;
     border: none;
-    margin-top: 20px;
-    font-size: 16px;
+    margin-top: 1.25rem;
+    font-size: 1rem;
     font-weight: 500;
-    line-height: 24px;
+    line-height: 1.4rem;
     letter-spacing: 0em;
     color: #FAFAFA;
 }

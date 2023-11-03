@@ -10,7 +10,7 @@
 }
 .cover_img{
     position: relative;
-    padding: 10px 10px 40px 10px;
+    padding: 0.625rem 0.625rem 2.5rem 0.625rem;
     background-image: url('../../assets//images//background/background1.jpg');
 }
 .cover_flashsalelist {
@@ -48,11 +48,11 @@
 }
 
 .today {
-    width: 64px;
-    height: 20px;
-    font-size: 16px;
+    width: 4rem;
+    height: 1.25rem;
+    font-size: 1rem;
     font-weight: 600;
-    line-height: 20px;
+    line-height: 1.25rem;
     letter-spacing: 0em;
     text-align: left;
     color: #DB4444;
@@ -60,10 +60,10 @@
 
 .cover_flashsale_text {
     width: fit-content;
-    height: 48px;
-    font-size: 36px;
+    height: 3rem;
+    font-size: 2.25rem;
     font-weight: 600;
-    line-height: 48px;
+    line-height: 3rem;
     letter-spacing: 0.04em;
     text-align: left;
     color: #000000;

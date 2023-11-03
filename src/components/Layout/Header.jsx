@@ -97,21 +97,7 @@ function Header(props) {
               <div className={styles.search_bar}>
                 <input type="text" placeholder="What are you looking for?" />
                 <button className="border-0 bg-transparent">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-search"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="m21 21-4.3-4.3" />
-                  </svg>
+                  <Image src={require('@/assets/images/icon/header/search_header.png')} alt="search icon" priority/>
                 </button>
               </div>
               {/* Wishlist icon*/}

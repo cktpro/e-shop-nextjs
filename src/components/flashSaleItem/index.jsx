@@ -71,11 +71,11 @@ function FlashSaleItem(props) {
       <div className={styles.cover_flashsale_head}>
         <div className={styles.cover_flashsale_image}>
           <Image
+            className={styles.img_head}
             src={imgSrc}
-            className="d-block w-100"
-            width={150}
-            height={150}
             alt="..."
+            width={130}
+            height={130}
           />
         </div>
 

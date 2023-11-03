@@ -9,16 +9,17 @@
     justify-content: center;
     width: fit-content;
     height: auto;
-    gap: 16px;
+    gap: 1rem;
     
 }
 
 .cover_flashsale_head {
     position: relative;
-    width: 270px;
-    height: 250px;
-    border-radius: 4px;
+    width: 16.875rem;
+    height: 15.625rem;
+    border-radius: 0.25rem;
     background: #F5F5F5;
+    
 }
 
 .cover_flashsale_head:hover {
@@ -28,8 +29,8 @@
         align-items: center;
         justify-content: center;
         bottom: 0;
-        width: 270px;
-        height: 41px;
+        width: 16.875rem;
+        height: 2.563rem;
         background: #000000;
         opacity: 1;
     }
@@ -192,12 +193,16 @@
 }
 
 .cover_flashsale_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    width: 190px;
-    height: 180px;
-    top: 35px;
-    left: 40px;
-    padding: 14px 9px 14px 9px;
+    width: 100%;
+     /* width: 11.875rem; */
+    height: 100%;
+    /* top: 2.188rem; */
+    /* left: 2.5rem; */
+    padding: 0.875rem 0.563rem 0.875rem 0.563rem;
     
 }
 .cover_flashsale_image>img{

@@ -1,24 +1,21 @@
 .cover_next_back_in {
     justify-content: flex-end;
-    margin: 5px 0;
+    margin: 10px 0;
     /* position: absolute;
     right: 0;
     top: 0; */
     display: flex;
     /* width: fit-content; */
-    gap: 10px;
+    gap: 0.625rem;
 }
 
-.cover_back {
-    cursor: pointer;
-    width: 46px;
-    height: 46px;
 
+.cover_next,.cover_back {
+    cursor: pointer;
+    width: 2.875rem;
+    height: 2.875rem;
 }
-
-.cover_next {
-    
-    cursor: pointer;
-    width: 46px;
-    height: 46px;
+.cover_next>img,.cover_back>img{
+    width: 2.875rem;
+    height: 2.875rem;
 }

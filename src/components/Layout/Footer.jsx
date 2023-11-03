@@ -9,13 +9,10 @@ function Footer(props) {
         {/* <ServicesMenu /> */}
       {/* Main Footer */}
 
+      <div className='container'>
       <div className={styles.main_footer}>
-      <div className="container">
-        
-        <div className={styles.content}>
-          <Row>
-            <Col xl={5} md={12} sm={24} xs={24}>
-              <h1>Logo</h1>
+        <div>
+        <h1>Logo</h1>
               <h3>Subscribe</h3>
               <p>Get 10% off your first order</p>
               <div className={styles.box_mail}>
@@ -27,30 +24,30 @@ function Footer(props) {
                   />
                 </button>
               </div>
-            </Col>
-            <Col xl={6} md={12} sm={24} xs={24}>
-              <h3>Support</h3>
+        </div>
+        <div>
+        <h3>Support</h3>
               <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
               <p>exclusive@gmail.com</p>
               <p>+88015-88888-9999</p>
-            </Col>
-            <Col xl={4} md={8} sm={0} xs={0}>
-              <h3>Account</h3>
+        </div>
+        <div>
+        <h3>Account</h3>
               <p>My account</p>
               {/* <p>Login / Register</p> */}
               <p>Cart</p>
               <p>Whitelist</p>
               <p>Shop</p>
-            </Col>
-            <Col xl={4} md={8} sm={0} xs={0}>
-              <h3>Quick Link</h3>
+        </div>
+        <div>
+        <h3>Quick Link</h3>
               <p>Privacy Policy</p>
               <p>Terms Of User</p>
               <p>FAQ</p>
               <p>Contact</p>
-            </Col>
-            <Col className={styles.download_app} xl={5} md={8} sm={24} xs={24} >
-              <h3>Download App</h3>
+        </div>
+        <div>
+        <h3>Download App</h3>
               <span className={styles.small_content}>
                 Save $3 with App New User Only
               </span>
@@ -90,14 +87,33 @@ function Footer(props) {
                   alt=""
                 />
               </div>
+        </div>
+      {/* <div className="container">
+        
+        <div className={styles.content}>
+          <Row>
+            
+            <Col xl={6} md={12} sm={24} xs={24}>
+              
+            </Col>
+            <Col xl={4} md={8} sm={0} xs={0}>
+             
+            </Col>
+            <Col xl={4} md={8} sm={0} xs={0}>
+              
+            </Col>
+            <Col className={styles.download_app} xl={5} md={8} sm={24} xs={24} >
+              
             </Col>
           </Row>
         </div>
-      </div>
+      </div> */}
       {/* Sub Footer */}
+      
+      </div>
+      </div>
       <div className={styles.sub_footer}>
         <p>Copyright Rimel 2022. All right reserved</p>
-      </div>
       </div>
       
     </footer>
