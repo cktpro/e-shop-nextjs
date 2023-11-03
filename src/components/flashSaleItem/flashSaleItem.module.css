@@ -202,10 +202,12 @@
     height: 100%;
     /* top: 2.188rem; */
     /* left: 2.5rem; */
-    padding: 0.875rem 0.563rem 0.875rem 0.563rem;
+    /* padding: 0.875rem 0.563rem 0.875rem 0.563rem; */
+    padding: 1rem;
     
 }
 .cover_flashsale_image>img{
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
