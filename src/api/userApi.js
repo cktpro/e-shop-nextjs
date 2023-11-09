@@ -1,10 +1,10 @@
 import axios from "axios";
-const endpoint = "https://cktdev.vercel.app";
+const endpoint = process.env.NEXT_PUBLIC_BACKEND_URL;
 const login = async (data) => {
   try {
    
     const result = await axios.post(
-      "https://cktdev.vercel.app/auth/login/",
+      `${endpoint}/user/login/`,
       data
     );
 
@@ -35,7 +35,7 @@ const getMe = async () => {
     const token = localStorage.getItem("Access_Token");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      const res = await axios.get(`${endpoint}/auth/profile/`);
+      const res = await axios.get(`${endpoint}/user/get_profile/`);
       return res.data.payload;
     }
     return false;

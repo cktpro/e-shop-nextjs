@@ -18,7 +18,7 @@ export default function SwiperProductImage() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <div className="cover_swiper">
+    <div className={styles.cover_swiper}>
       <Swiper
         loop={true}
         spaceBetween={0}
@@ -28,7 +28,7 @@ export default function SwiperProductImage() {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className={styles.mySwiper2}
       >
         <SwiperSlide>
           <Image src={require("@/assets/productDetail/chuotlgt.webp")} alt="..." />
@@ -64,7 +64,7 @@ export default function SwiperProductImage() {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className={styles.mySwiper}
         // direction="vertical"
       >
         <SwiperSlide>

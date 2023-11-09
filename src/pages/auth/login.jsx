@@ -11,11 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionLogin, actionGetMyProfile } from "@/redux-store/account/action";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useUserStore } from "@/zustand/store";
 function Form(props) {
   const dispatch = useDispatch();
   const route = useRouter();
-
   const account = useSelector((state) => state.accountReducer);
+  const user=useUserStore()
   const validationLogin = useFormik({
     initialValues: {
       email: "",
@@ -30,7 +31,8 @@ function Form(props) {
         .required("Vui lòng nhập mật khẩu"),
     }),
     onSubmit: (values) => {
-      dispatch(actionLogin(values));
+      // dispatch(actionLogin(values));
+      user.login(values)
       //   const { password, confirmPassword } = values;
       //   const data = {
       //     password,
@@ -45,7 +47,7 @@ function Form(props) {
       // Xử lý logic đăng nhập ở đây
     },
   });
-  if(account.isLogin===true){
+  if(user.isLogin===true){
     setTimeout(() => {
       route.push("/");
     }, 2000);
@@ -61,17 +63,17 @@ function Form(props) {
 
           <div className={styles.login_content}>
             <div className="d-flex flex-column gap-3">
-              {account.isLogin === true && account.isLoading === false && (
+              {user.isLogin === true && user.isLoading === false && (
                 <div className="alert alert-success" role="alert">
                   Đăng nhập thành công
                 </div>
               )}
-              {account.isLoading === true && (
+              {user.isLoading === true && (
                 <div className="alert alert-info" role="alert">
                   Vui lòng chờ
                 </div>
               )}
-              {account.isLogin === false && account.isLoading === false && (
+              {user.isLogin === false && account.isLoading === false && (
                 <div className="alert alert-danger" role="alert">
                   Đăng nhập thất bại
                 </div>

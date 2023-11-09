@@ -9,8 +9,8 @@ import OurProducts from '@/components/ourProducts'
 import Featured from '@/components/featured'
 import ServicesMenu from '@/components/servicesMenu'
 import SlideBar from '@/components/slidebar'
-import Carousels from '@/components/carousel'
-import SlideBarMobile from '@/components/slidebar/slidebarMobile'
+// import Carousels from '@/components/carousel'
+// import SlideBarMobile from '@/components/slidebar/slidebarMobile'
 // Import Data
 import products from "@/data/product.json";
 import categories from "@/data/categories.json";
