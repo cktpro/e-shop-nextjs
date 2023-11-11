@@ -1,54 +1,50 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 // import gamepad from "@/assets/product/gamePad.png";
 // import laptop from "@/assets/product/laptop.png";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./cart.module.scss";
 import HeadMeta from "@/components/HeadMeta";
+import { useCartStore } from "@/zustand/store";
+import { message } from "antd";
+import { useRouter } from "next/router";
 // import { Checkbox } from "antd";
-const fakeItem = [
-  {
-    id: 1,
-    name: "LCD Monitor",
-    image: require("@/assets/images/cart/monitor.png"),
-    price: 650,
-    quantity: 10,
-    discount: 5,
-  },
-  {
-    id: 2,
-    name: "Hi Gamepad",
-    image: require("@/assets/images/cart/gamePad.png"),
-    price: 550,
-    quantity: 2,
-    discount: 4,
-  },
-];
-function Cart(props) {
-  let total=0
-  const [product,setProduct]=useState(fakeItem)
-  const [selected,setSelected]=useState([])
-  const formSubmit =(event)=>{
-    event.preventDefault()
-    console.log('◀◀◀ check ▶▶▶',product);
-    console.log('◀◀◀ selected ▶▶▶',selected);
 
-  }
-const handleChecked=(e,item)=>{
-  if(e.target.checked)
-  setSelected((prev)=>[...prev,item])
-}
-const deleteItem=useCallback((index)=>{
-  const newProduct=product
-  newProduct.splice(index,1)
-  setProduct([...newProduct])
-  console.log('◀◀◀ index ▶▶▶',newProduct);
-},[product])
-const handleChange=useCallback((e,index)=>{
-  const newProduct=product
-  newProduct[index].quantity= e.target.value
-  setProduct(newProduct)
-},[product])
+function Cart(props) {
+  let total = 0;
+  const cart = useCartStore();
+  const [selected, setSelected] = useState([]);
+  const [showModal, setShowModal] = useState(null);
+  const router=useRouter()
+  const formSubmit = (event) => {
+    event.preventDefault();
+    cart.updateCart(selected);
+  };
+  const handleChecked = (e, item) => {
+    if (e.target.checked) setSelected((prev) => [...prev, item]);
+  };
+  const handleChange = useCallback(
+    (e, index) => {
+      if (parseInt(e.target.value) > selected[index].product.varian.stock) {
+        message.error(
+          `Số lượng sản phầm trong kho chỉ còn ${selected[index].product.varian.stock} sản phẩm`
+        );
+        e.target.value = selected[index].product.varian.stock;
+      }
+      const newItem = selected;
+      newItem[index].product.quantity = parseInt(e.target.value);
+      setSelected(newItem);
+    },
+    [selected]
+  );
+  useEffect(() => {
+    if (cart.isSuccess) {
+      setSelected(cart.cart);
+    }else(
+      router.push("/auth/login")
+    )
+    
+  }, [cart]);
   return (
     <>
       <HeadMeta title="Cart" />
@@ -70,58 +66,135 @@ const handleChange=useCallback((e,index)=>{
         <div className={styles.block_cart}>
           {/* Shopping Detail Cart  */}
           <form name="form" onSubmit={formSubmit}>
-          <table className={`table text-center ${styles.cart_table}`}>
-            <thead>
-              <tr>
-                <th scope="col">
-                  <input type="checkbox"  />
-                </th>
-                <th scope="col">Product</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Discount</th>
-                <th scope="col">Subtotal</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody >
-              {
-                product.map((item,index)=>{
-                 total += item.price * (100 - item.discount) / 100
-                  return <tr key={index} >
-                    <td><input type="checkbox" onChange={(e)=>handleChecked(e,item)}/></td>
-                    <td ><Image src={item.image} alt={item.name} width={80} height={80} /><span className="ms-2">{item.name}</span></td>
-                    <td>${item.price}</td>
-                    <td><input className={styles.cart_input} name="quantity" type="number" defaultValue={item.quantity} onChange={(e)=>handleChange(e,index)} /></td>
-                    <td ><span className="badge bg-success">{item.discount}%</span></td>
-                    <td>${item.price * (100 - item.discount) / 100}</td>
-                    <td><button type="button" onClick={()=>deleteItem(index)} className="btn btn-danger">Delete</button></td>
+            <table className={`table text-center ${styles.cart_table}`}>
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Discount</th>
+                  <th scope="col">Subtotal</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              {cart.isSuccess ? (
+                <tbody>
+                  {cart.cart.map((item, index) => {
+                    total +=
+                      ((item.product.varian.price *
+                        (100 - item.product.productDetail.discount)) /
+                        100) *
+                      item.product.quantity;
+                    return (
+                      <tr key={index}>
+                        <td>
+                          <div className="d-flex align-items-center justify-content-center gap-2">
+                            <Image
+                              src={item.product.image.location}
+                              alt={item.product.productDetail.name}
+                              className={styles.image}
+                              width={100}
+                              height={100}
+                              priority
+                            />
+                            <div className="d-flex flex-column align-items-start gap-1">
+                              <span>{item.product.productDetail.name}</span>
+                              <span className="text-black-50">
+                                {item.product.varian.color}-
+                                {item.product.varian.memory}
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                        <td>${item.product.varian.price}</td>
+                        <td>
+                          <input
+                            className={styles.cart_input}
+                            name="quantity"
+                            type="number"
+                            min={0}
+                            defaultValue={item.product.quantity}
+                            onChange={(e) => handleChange(e, index)}
+                          />
+                        </td>
+                        <td>
+                          <span className="badge bg-success">
+                            {item.product.productDetail.discount}%
+                          </span>
+                        </td>
+                        <td>
+                          $
+                          {(item.product.varian.price *
+                            (100 - item.product.productDetail.discount)) /
+                            100}
+                        </td>
+                        <td>
+                          <div className={`${styles.btn_del}`}>
+                            <button
+                              id={index}
+                              type="button"
+                              
+                              className="btn btn-danger"
+                              on
+                              onClick={() =>
+                                setShowModal(index)
+                              }
+                            >
+                              Delete
+                            </button>
+                            <div className={showModal===index? `${styles.modal} ${styles.btn_active}`:`${styles.modal}`}>
+                              <p>Are you sure delete?</p>
+                              <div className={`d-flex justify-content-center gap-1`}>
+
+                                <button
+                                  type="button"
+                                  className="btn btn-sm btn-primary"
+                                  onClick={() =>
+                                    cart.removeCart(item.product.varianId)
+                                  }
+                                >
+                                  
+                                  Xác nhận
+                                </button>
+                                <button
+                                  type="button"
+                                  className="btn btn-sm btn-secondary"
+                                  onClick={() => setShowModal(null)}
+                                >
+                                  Hủy
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              ) : (
+                <tbody>
+                  <tr>
+                    <td colSpan={5}>Loading</td>
                   </tr>
-                })
-              }
-            </tbody>
-          </table>
-          <div
-            className={`d-flex justify-content-between`}
-          >
-           <button
-                  type="button"
-                  onClick={() => {
-                    window.history.back();
-                  }}
-                  className="btn btn-outline-dark style"
-                >
-                  Return To Shop
-                </button>
-                <button
-                  type="submit"
-                  className="btn btn-outline-dark style"
-                >
-                 Update Cart
-                </button>
-          </div>
-          {/* <hr  width="90%"/> */}
-</form>
+                </tbody>
+              )}
+            </table>
+            <div className={`d-flex justify-content-between`}>
+              <button
+                type="button"
+                onClick={() => {
+                  window.history.back();
+                }}
+                className="btn btn-outline-dark style"
+              >
+                Return To Shop
+              </button>
+              <button type="submit" className="btn btn-outline-dark style">
+                Update Cart
+              </button>
+            </div>
+            {/* <hr  width="90%"/> */}
+          </form>
           <div className="d-flex justify-content-between my-4">
             <div className="d-flex justify-content-around gap-lg-3">
               <input
@@ -142,7 +215,7 @@ const handleChange=useCallback((e,index)=>{
               className="border border-dark  "
               style={{ height: 324, width: 470, margin: "top" }}
             >
-              <div className="container mt-3">
+              {cart.isSuccess?<div className="container mt-3">
                 <h5 className="text" width={100} height={28}>
                   Cart Total
                 </h5>
@@ -152,13 +225,18 @@ const handleChange=useCallback((e,index)=>{
                 </div>
                 <hr width="99%" color="black" size="1px" />
                 <div className="d-flex justify-content-between">
-                  <p>Shiping:</p>
-                  <p ><span className="badge bg-info">Free</span></p>
+                  <p>Coupon:</p>
+                  <p>
+                    <span className="badge bg-danger">No</span>
+                  </p>
                 </div>
                 <hr width="99%" color="black" size="1px" />
                 <div className="d-flex justify-content-between">
                   <p>Total:</p>
-                  <p>${total}</p>
+                  <p className="bold">
+                    ${total} +{" "}
+                    <span className="badge bg-info">Shipping Fee</span>
+                  </p>
                 </div>
 
                 <div className="d-flex justify-content-around">
@@ -168,7 +246,10 @@ const handleChange=useCallback((e,index)=>{
                     </button>
                   </Link>
                 </div>
-              </div>
+              </div>:<div className="container mt-3">
+                Loading
+              </div>}
+              
             </span>
           </div>
         </div>

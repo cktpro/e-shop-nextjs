@@ -7,15 +7,10 @@ import styles from "./styles/login.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import HeadMeta from "@/components/HeadMeta";
-import { useDispatch, useSelector } from "react-redux";
-import { actionLogin, actionGetMyProfile } from "@/redux-store/account/action";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { useUserStore } from "@/zustand/store";
 function Form(props) {
-  const dispatch = useDispatch();
   const route = useRouter();
-  const account = useSelector((state) => state.accountReducer);
   const user=useUserStore()
   const validationLogin = useFormik({
     initialValues: {
@@ -73,7 +68,7 @@ function Form(props) {
                   Vui lòng chờ
                 </div>
               )}
-              {user.isLogin === false && account.isLoading === false && (
+              {user.isLogin === false && user.isLoading === false && (
                 <div className="alert alert-danger" role="alert">
                   Đăng nhập thất bại
                 </div>

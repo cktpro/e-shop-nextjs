@@ -1,9 +1,9 @@
 import HeadMeta from "@/components/HeadMeta";
 import React from "react";
 import styles from "./account.module.scss";
-import { useSelector } from "react-redux";
+import { useUserStore } from "@/zustand/store";
 function Account(props) {
-const account = useSelector((state)=>state.accountReducer)
+const account = useUserStore()
   return (
 
     <>

@@ -102,7 +102,16 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-
+        .icon_cart{
+          .box_cart{
+            position: relative;
+            span{
+              position: absolute;
+              top: -0.5rem;
+              left: 1.25rem;
+            }
+          }
+        }
         .icon_whishlist,
         .icon_cart,
         .icon_account {
