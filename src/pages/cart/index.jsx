@@ -8,6 +8,7 @@ import HeadMeta from "@/components/HeadMeta";
 import { useCartStore } from "@/zustand/store";
 import { message } from "antd";
 import { useRouter } from "next/router";
+import { formattedMoney } from "@/helper";
 // import { Checkbox } from "antd";
 
 function Cart(props) {
@@ -15,10 +16,10 @@ function Cart(props) {
   const cart = useCartStore();
   const [selected, setSelected] = useState([]);
   const [showModal, setShowModal] = useState(null);
-  const router=useRouter()
-  const formSubmit = (event) => {
+  const router = useRouter();
+  const formSubmit =  async(event) => {
     event.preventDefault();
-    cart.updateCart(selected);
+    await cart.updateCart(selected);
   };
   const handleChecked = (e, item) => {
     if (e.target.checked) setSelected((prev) => [...prev, item]);
@@ -26,6 +27,11 @@ function Cart(props) {
   const handleChange = useCallback(
     (e, index) => {
       if (parseInt(e.target.value) > selected[index].product.varian.stock) {
+        const newItem = selected;
+        newItem[index].product.quantity = parseInt(
+          selected[index].product.varian.stock
+        );
+        setSelected(newItem);
         message.error(
           `Số lượng sản phầm trong kho chỉ còn ${selected[index].product.varian.stock} sản phẩm`
         );
@@ -40,10 +46,7 @@ function Cart(props) {
   useEffect(() => {
     if (cart.isSuccess) {
       setSelected(cart.cart);
-    }else(
-      router.push("/auth/login")
-    )
-    
+    } else router.push("/auth/login");
   }, [cart]);
   return (
     <>
@@ -106,7 +109,9 @@ function Cart(props) {
                             </div>
                           </div>
                         </td>
-                        <td>${item.product.varian.price}</td>
+                        <td>
+                          {formattedMoney(item.product.varian.price)}
+                        </td>
                         <td>
                           <input
                             className={styles.cart_input}
@@ -123,29 +128,36 @@ function Cart(props) {
                           </span>
                         </td>
                         <td>
-                          $
-                          {(item.product.varian.price *
-                            (100 - item.product.productDetail.discount)) /
-                            100}
+                          {console.log('◀◀◀ item.product.quantity ▶▶▶',item.product.quantity)}
+                          {formattedMoney(
+                            ((item.product.varian.price *
+                              (100 - item.product.productDetail.discount)) /
+                              100) * 
+                              (item.product.quantity)
+                          )}
                         </td>
                         <td>
                           <div className={`${styles.btn_del}`}>
                             <button
                               id={index}
                               type="button"
-                              
                               className="btn btn-danger"
                               on
-                              onClick={() =>
-                                setShowModal(index)
-                              }
+                              onClick={() => setShowModal(index)}
                             >
                               Delete
                             </button>
-                            <div className={showModal===index? `${styles.modal} ${styles.btn_active}`:`${styles.modal}`}>
+                            <div
+                              className={
+                                showModal === index
+                                  ? `${styles.modal} ${styles.btn_active}`
+                                  : `${styles.modal}`
+                              }
+                            >
                               <p>Are you sure delete?</p>
-                              <div className={`d-flex justify-content-center gap-1`}>
-
+                              <div
+                                className={`d-flex justify-content-center gap-1`}
+                              >
                                 <button
                                   type="button"
                                   className="btn btn-sm btn-primary"
@@ -153,7 +165,6 @@ function Cart(props) {
                                     cart.removeCart(item.product.varianId)
                                   }
                                 >
-                                  
                                   Xác nhận
                                 </button>
                                 <button
@@ -185,7 +196,7 @@ function Cart(props) {
                 onClick={() => {
                   window.history.back();
                 }}
-                className="btn btn-outline-dark style"
+                className="btn btn-outline-dark style "
               >
                 Return To Shop
               </button>
@@ -215,41 +226,42 @@ function Cart(props) {
               className="border border-dark  "
               style={{ height: 324, width: 470, margin: "top" }}
             >
-              {cart.isSuccess?<div className="container mt-3">
-                <h5 className="text" width={100} height={28}>
-                  Cart Total
-                </h5>
-                <div className="d-flex justify-content-between my-4 ">
-                  <p>Subtotal:</p>
-                  <p>${total}</p>
-                </div>
-                <hr width="99%" color="black" size="1px" />
-                <div className="d-flex justify-content-between">
-                  <p>Coupon:</p>
-                  <p>
-                    <span className="badge bg-danger">No</span>
-                  </p>
-                </div>
-                <hr width="99%" color="black" size="1px" />
-                <div className="d-flex justify-content-between">
-                  <p>Total:</p>
-                  <p className="bold">
-                    ${total} +{" "}
-                    <span className="badge bg-info">Shipping Fee</span>
-                  </p>
-                </div>
+              {cart.isSuccess ? (
+                <div className="container mt-3">
+                  <h5 className="text" width={100} height={28}>
+                    Cart Total
+                  </h5>
+                  <div className="d-flex justify-content-between my-4 ">
+                    <p>Subtotal:</p>
+                    <p>{formattedMoney(total)}</p>
+                  </div>
+                  <hr width="99%" color="black" size="1px" />
+                  <div className="d-flex justify-content-between">
+                    <p>Coupon:</p>
+                    <p>
+                      <span className="badge bg-danger">No</span>
+                    </p>
+                  </div>
+                  <hr width="99%" color="black" size="1px" />
+                  <div className="d-flex justify-content-between">
+                    <p>Total:</p>
+                    <p className="bold">
+                      {formattedMoney(total)} +{" "}
+                      <span className="badge bg-info">Shipping Fee</span>
+                    </p>
+                  </div>
 
-                <div className="d-flex justify-content-around">
-                  <Link href="/checkout">
-                    <button className="btn btn-danger ">
-                      Process Checkout
-                    </button>
-                  </Link>
+                  <div className="d-flex justify-content-around">
+                    <Link href="/checkout">
+                      <button type="submit" className="btn btn-danger ">
+                        Process Checkout
+                      </button>
+                    </Link>
+                  </div>
                 </div>
-              </div>:<div className="container mt-3">
-                Loading
-              </div>}
-              
+              ) : (
+                <div className="container mt-3">Loading</div>
+              )}
             </span>
           </div>
         </div>

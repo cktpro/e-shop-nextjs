@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./checkout.module.scss";
 import gamepad from "@/assets/product/gamePad.png";
 import laptop from "@/assets/product/laptop.png";
@@ -9,96 +9,40 @@ import master_card from "@/assets/images/payment-method/Mastercard.wine.svg";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
-import { useRouter } from "next/router";
 import { useCartStore, useUserStore } from "@/zustand/store";
 import HeadMeta from "@/components/HeadMeta";
+import { useShippingStore } from "@/zustand/shipping";
+import { formattedMoney } from "@/helper";
+
 function Checkout(props) {
+  
+  const [address, setAddress] = useState({
+    districtId: null,
+    wardId: "",
+  });
   const user = useUserStore();
   const cart = useCartStore();
-  const [province, setProvince] = useState([]);
-  const [distric, setDistric] = useState([]);
-  const [ward, setWard] = useState([]);
-  const [feeShip,setFeeShip]=useState(0)
-  const dataShip={
-      "from_district_id":1454,
-      "from_ward_code":"21211",
-      "service_id":53320,
-      "service_type_id":null,
-      "to_district_id":1452,
-      "to_ward_code":"21012",
-      "height":50,
-      "length":20,
-      "weight":200,
-      "width":20,
-      "insurance_value":10000,
-      "cod_failed_amount":2000,
-      "coupon": null
-      
-  }
-  const getProvince = async () => {
-    try {
-      axios.defaults.headers.common["token"] =
-        "b100dde3-66b8-11ee-96dc-de6f804954c9";
-      const res = await axios.get(
-        "https://online-gateway.ghn.vn/shiip/public-api/master-data/province"
-      );
-      setProvince(res.data.data);
-    } catch (error) {
-      console.log("◀◀◀ error ▶▶▶", error);
-    }
-  };
-  const getDistric = async (provinceId) => {
-    setWard([]);
-    console.log("◀◀◀ provinceId ▶▶▶", provinceId);
-    try {
-      const data = {
-        province_id: parseInt(provinceId),
-      };
-      // axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
-      const res = await axios.post(
-        "https://online-gateway.ghn.vn/shiip/public-api/master-data/district",
-        data
-      );
-      setDistric(res.data.data);
-    } catch (error) {
-      console.log("◀◀◀ error ▶▶▶", error);
-    }
-  };
-  const getWard = async (districId) => {
-    try {
-      const data = {
-        district_id: parseInt(districId),
-      };
-      // axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
-      const res = await axios.post(
-        "https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id",
-        data
-      );
-      setWard(res.data.data);
-    } catch (error) {
-      console.log("◀◀◀ error ▶▶▶", error);
-    }
-  };
-  const getFeeShip = async (data) => {
-    try {
-      // axios.defaults.headers.common['token'] = "b100dde3-66b8-11ee-96dc-de6f804954c9"
-      const res = await axios.post(
-        "https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee",
-        data
-      );
-      setFeeShip(res.data.data.total)
-    } catch (error) {
-      console.log("◀◀◀ error ▶▶▶", error);
-    }
-  };
-
+  const shipping = useShippingStore();
+  const handleChangeFee = useCallback(
+    async (e) => {
+      setAddress((item) => ({
+        ...item,
+        wardId: e.target.value.toString(),
+      }));
+      shipping.getFee(address, cart.cart);
+    },
+    [address, cart, shipping]
+  );
   useEffect(() => {
-    getProvince();
-    getFeeShip(dataShip)
+    shipping.getProvince();
   }, []);
-  let totalPrice=0
+  useEffect(() => {
+    if (user.isProfile) {
+      shipping.getFee(user.profile.address[0], cart.cart);
+    }
+  }, [cart, user]);
+  let totalPrice = 0;
   return (
-
     <>
       <HeadMeta title="Check out" />
       <div className="container mb-5">
@@ -121,7 +65,6 @@ function Checkout(props) {
 
         {user.isProfile === true ? (
           <div className="row">
-            {console.log("◀◀◀  ▶▶▶", user.profile)}
             <div className="col-12 col-md-6">
               <div className="row g-3">
                 <div className="col-12 col-lg-10">
@@ -195,25 +138,27 @@ function Checkout(props) {
                   </label>
                   <select
                     className={`form-control ${styles.input_info}`}
-                    onChange={(e) => getDistric(e.target.value)}
+                    onChange={(e) => shipping.getDistrict(e.target.value)}
                     name="province"
+                    defaultValue={user.profile.address[0].provinceId}
                   >
-                    {province.map((item, idx) => {
-                      if (
-                        item.ProvinceID == user.profile.address[0].provinceId
-                      ) {
+                    {shipping.isProvince === true &&
+                      shipping.provinceList.map((item, idx) => {
+                        if (
+                          item.ProvinceID == user.profile.address[0].provinceId
+                        ) {
+                          return (
+                            <option value={item.ProvinceID} key={idx}>
+                              {item.ProvinceName}{" "}
+                            </option>
+                          );
+                        }
                         return (
-                          <option value={item.ProvinceID} key={idx} selected>
+                          <option value={item.ProvinceID} key={idx}>
                             {item.ProvinceName}{" "}
                           </option>
                         );
-                      }
-                      return (
-                        <option value={item.ProvinceID} key={idx}>
-                          {item.ProvinceName}{" "}
-                        </option>
-                      );
-                    })}
+                      })}
                   </select>
                 </div>
                 <div className="col-12 col-lg-10">
@@ -225,17 +170,23 @@ function Checkout(props) {
                   </label>
                   <select
                     className={`form-control ${styles.input_info}`}
-                    onChange={(e) => getWard(e.target.value)}
+                    onChange={(e) => {
+                      setAddress((item) => ({
+                        ...item,
+                        districtId: e.target.value,
+                      }));
+                      shipping.getWard(e.target.value);
+                    }}
                     name="distric"
                   >
-                    {distric.length > 0 ? (
-                      distric.map((item, idx) => {
+                    {shipping.districtList.length > 0 ? (
+                      shipping.districtList.map((item, idx) => {
                         if (
                           item.DistrictID ==
                           user.profile.address[0].districtName
                         ) {
                           return (
-                            <option value={item.ProvinceID} key={idx} selected>
+                            <option value={item.ProvinceID} key={idx}>
                               {item.ProvinceName}{" "}
                             </option>
                           );
@@ -247,9 +198,17 @@ function Checkout(props) {
                         );
                       })
                     ) : (
-                      <option value={user.profile.address[0].districtId}>
-                        {user.profile.address[0].districtName}{" "}
-                      </option>
+                      <>
+                        <option
+                          value={user.profile.address[0].districtId}
+                          hidden
+                        >
+                          {user.profile.address[0].districtName}{" "}
+                        </option>
+                        <option value="" disabled>
+                          Please choose province
+                        </option>
+                      </>
                     )}
                   </select>
                 </div>
@@ -263,9 +222,10 @@ function Checkout(props) {
                   <select
                     className={`form-control ${styles.input_info}`}
                     name="distric"
+                    onChange={(e) => handleChangeFee(e)}
                   >
-                    {ward.length > 0 ? (
-                      ward.map((item, idx) => {
+                    {shipping.wardList.length > 0 ? (
+                      shipping.wardList.map((item, idx) => {
                         return (
                           <option value={item.WardCode} key={idx}>
                             {item.WardName}{" "}
@@ -273,9 +233,14 @@ function Checkout(props) {
                         );
                       })
                     ) : (
-                      <option value={user.profile.address[0].wardId}>
-                        {user.profile.address[0].wardName}{" "}
-                      </option>
+                      <>
+                        <option value={user.profile.address[0].wardId} hidden>
+                          {user.profile.address[0].wardName}
+                        </option>
+                        <option value="" disabled>
+                          Please choose distict
+                        </option>
+                      </>
                     )}
                   </select>
                 </div>
@@ -318,22 +283,40 @@ function Checkout(props) {
               <div className="row justify-content-end mt-2 g-3">
                 <div className="col-12 col-md-11">
                   <div className="row g-3">
-                    {
-                    cart.cart.map((item, idx) => {
+                    {cart.cart.map((item, idx) => {
                       // let total =0
-                      totalPrice += (item.product.varian.price * (100 - item.product.productDetail.discount)/100) * item.product.quantity
-                    return  <div key={idx} className="col-12 col-lg-10 d-flex justify-content-between align-items-center p-2">
-                        <div className="d-flex align-items-center">
-                          <Image
-                            src={item.product.image.location}
-                            alt="gamepad"
-                            width={50}
-                            height={50}
-                          />
-                          <div className="mx-2">{item.product.productDetail.name} - {item.product.varian.color} - {item.product.varian.memory}</div>
+                      totalPrice +=
+                        ((item.product.varian.price *
+                          (100 - item.product.productDetail.discount)) /
+                          100) *
+                        item.product.quantity;
+                      return (
+                        <div
+                          key={idx}
+                          className="col-12 col-lg-10 d-flex justify-content-between align-items-center p-2"
+                        >
+                          <div className="d-flex align-items-center">
+                            <Image
+                              src={item.product.image.location}
+                              alt="gamepad"
+                              width={50}
+                              height={50}
+                            />
+                            <div className="d-flex flex-column mx-2">
+                              <span>{item.product.productDetail.name} -{" "}
+                              {item.product.varian.color} -{" "}
+                              {item.product.varian.memory}</span>
+                              <span className="text-black-50">quantity : {item.product.quantity}</span>
+                            </div>
+                          </div>
+                          <label>
+                            
+                            {formattedMoney(((item.product.varian.price *
+                              (100 - item.product.productDetail.discount)) /
+                              100) )}
+                          </label>
                         </div>
-                        <label>${(item.product.varian.price * (100 - item.product.productDetail.discount)/100) * item.product.quantity}</label>
-                      </div>;
+                      );
                     })}
                     {/* <div className="col-12 col-lg-10 d-flex justify-content-between align-items-center p-2">
                 <div className="d-flex align-items-center">
@@ -345,17 +328,28 @@ function Checkout(props) {
                     <div className="col-12 col-lg-10 g-2 px-2">
                       <div className="d-flex justify-content-between align-items-center my-2">
                         <label>Subtotal:</label>
-                        <label>${totalPrice}</label>
+                        <label>{formattedMoney(totalPrice)}</label>
                       </div>
                       <hr className="hr border-2" />
                       <div className="d-flex justify-content-between align-items-center my-2">
                         <label>Shipping:</label>
-                        <label>${feeShip/24000}</label>
+                        <label>
+                          {shipping.isFeeShip === true
+                            ? `${formattedMoney(shipping.feeShip / 24000)}`
+                            : "Loading"}
+                        </label>
                       </div>
                       <hr className="hr border-2" />
                       <div className="d-flex justify-content-between align-items-center my-2">
                         <label>Total:</label>
-                        <label>${totalPrice + parseFloat(feeShip/24000)}</label>
+                        <label>
+                          {shipping.isFeeShip === true
+                            ? `${formattedMoney(
+                                totalPrice +
+                                parseFloat(shipping.feeShip / 24000)
+                              )}`
+                            : "Loading"}
+                        </label>
                       </div>
                     </div>
                     <div className="col-12 col-lg-10 d-flex justify-content-between align-items-center py-1 px-2 g-1">
