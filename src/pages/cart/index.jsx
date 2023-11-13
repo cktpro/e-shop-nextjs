@@ -26,16 +26,16 @@ function Cart(props) {
   };
   const handleChange = useCallback(
     (e, index) => {
-      if (parseInt(e.target.value) > selected[index].product.varian.stock) {
+      if (parseInt(e.target.value) > selected[index].productDetail.stock) {
         const newItem = selected;
         newItem[index].product.quantity = parseInt(
-          selected[index].product.varian.stock
+          selected[index].productDetail.stock
         );
         setSelected(newItem);
         message.error(
-          `Số lượng sản phầm trong kho chỉ còn ${selected[index].product.varian.stock} sản phẩm`
+          `Số lượng sản phầm trong kho chỉ còn ${selected[index].productDetail.stock} sản phẩm`
         );
-        e.target.value = selected[index].product.varian.stock;
+        e.target.value = selected[index].productDetail.stock;
       }
       const newItem = selected;
       newItem[index].product.quantity = parseInt(e.target.value);
@@ -84,8 +84,8 @@ function Cart(props) {
                 <tbody>
                   {cart.cart.map((item, index) => {
                     total +=
-                      ((item.product.varian.price *
-                        (100 - item.product.productDetail.discount)) /
+                      ((item.productDetail.price *
+                        (100 - item.productDetail.discount)) /
                         100) *
                       item.product.quantity;
                     return (
@@ -93,24 +93,20 @@ function Cart(props) {
                         <td>
                           <div className="d-flex align-items-center justify-content-center gap-2">
                             <Image
-                              src={item.product.image.location}
-                              alt={item.product.productDetail.name}
+                              src={item.image.location}
+                              alt={item.productDetail.name}
                               className={styles.image}
                               width={100}
                               height={100}
                               priority
                             />
                             <div className="d-flex flex-column align-items-start gap-1">
-                              <span>{item.product.productDetail.name}</span>
-                              <span className="text-black-50">
-                                {item.product.varian.color}-
-                                {item.product.varian.memory}
-                              </span>
+                              <span>{item.productDetail.name}</span>
                             </div>
                           </div>
                         </td>
                         <td>
-                          {formattedMoney(item.product.varian.price)}
+                          {formattedMoney(item.productDetail.price)}
                         </td>
                         <td>
                           <input
@@ -124,14 +120,14 @@ function Cart(props) {
                         </td>
                         <td>
                           <span className="badge bg-success">
-                            {item.product.productDetail.discount}%
+                            {item.productDetail.discount}%
                           </span>
                         </td>
                         <td>
                           {console.log('◀◀◀ item.product.quantity ▶▶▶',item.product.quantity)}
                           {formattedMoney(
-                            ((item.product.varian.price *
-                              (100 - item.product.productDetail.discount)) /
+                            ((item.productDetail.price *
+                              (100 - item.productDetail.discount)) /
                               100) * 
                               (item.product.quantity)
                           )}

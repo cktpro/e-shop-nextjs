@@ -286,8 +286,8 @@ function Checkout(props) {
                     {cart.cart.map((item, idx) => {
                       // let total =0
                       totalPrice +=
-                        ((item.product.varian.price *
-                          (100 - item.product.productDetail.discount)) /
+                        ((item.productDetail.price *
+                          (100 - item.productDetail.discount)) /
                           100) *
                         item.product.quantity;
                       return (
@@ -297,22 +297,20 @@ function Checkout(props) {
                         >
                           <div className="d-flex align-items-center">
                             <Image
-                              src={item.product.image.location}
+                              src={item.image.location}
                               alt="gamepad"
                               width={50}
                               height={50}
                             />
                             <div className="d-flex flex-column mx-2">
-                              <span>{item.product.productDetail.name} -{" "}
-                              {item.product.varian.color} -{" "}
-                              {item.product.varian.memory}</span>
-                              <span className="text-black-50">quantity : {item.product.quantity}</span>
+                              <span>{item.productDetail.name}</span>
+                              <span className="text-black-50">quantity : {item.productDetail.quantity}</span>
                             </div>
                           </div>
                           <label>
                             
-                            {formattedMoney(((item.product.varian.price *
-                              (100 - item.product.productDetail.discount)) /
+                            {formattedMoney(((item.productDetail.price *
+                              (100 - item.productDetail.discount)) /
                               100) )}
                           </label>
                         </div>

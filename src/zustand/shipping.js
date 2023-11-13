@@ -20,15 +20,16 @@ const useShippingStore = create((set) => ({
         length = 0,
         weight = 0;
       for (let i = 0; i < product.length; i++) {
-        width += product[i].product.varian.width * product[i].product.quantity ;
-        height += product[i].product.varian.height * product[i].product.quantity ;
-        weight += product[i].product.varian.weight * product[i].product.quantity ;
-        length += product[i].product.varian.length * product[i].product.quantity ;
+
+        width += product[i].productDetail.width * product[i].product.quantity ;
+        height += product[i].productDetail.height * product[i].product.quantity ;
+        weight += product[i].productDetail.weight * product[i].product.quantity ;
+        length += product[i].productDetail.length * product[i].product.quantity ;
       }
-      console.log('◀◀◀  ▶▶▶',width,
-      height,
-      length,
-      weight);
+      // console.log('◀◀◀  ▶▶▶',width,
+      // height,
+      // length,
+      // weight);
       const dataShip = {
         from_district_id: 1526,
         from_ward_code: "40103",
