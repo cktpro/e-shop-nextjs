@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import HeadMeta from "@/components/HeadMeta";
 import { useRouter } from "next/router";
 import { useCartStore, useUserStore } from "@/zustand/store";
+import Loading from "@/components/loader/loading";
 function Form(props) {
   const router = useRouter();
   const user=useUserStore()
@@ -45,11 +46,12 @@ function Form(props) {
   if(user.isLogin===true){
     setTimeout(() => {
       router.back();
-    }, 0);
+    }, 2000);
   }
   return (
     <>
       <HeadMeta title="Login" />
+      <Loading isLoading={user.isLoading}/>
       <div className={`container`}>
         <div className={styles.main_login}>
           <div className={styles.login_image}>
@@ -58,21 +60,6 @@ function Form(props) {
 
           <div className={styles.login_content}>
             <div className="d-flex flex-column gap-3">
-              {user.isLogin === true && user.isLoading === false && (
-                <div className="alert alert-success" role="alert">
-                  Đăng nhập thành công
-                </div>
-              )}
-              {user.isLoading === true && (
-                <div className="alert alert-info" role="alert">
-                  Vui lòng chờ
-                </div>
-              )}
-              {user.isLogin === false && user.isLoading === false && (
-                <div className="alert alert-danger" role="alert">
-                  Đăng nhập thất bại
-                </div>
-              )}
               <h1 className="m-0">Login to E-Shop</h1>
               <h6 className="m-0">Enter your details below</h6>
             </div>

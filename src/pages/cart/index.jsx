@@ -10,6 +10,7 @@ import { message } from "antd";
 import { useRouter } from "next/router";
 import { formattedMoney } from "@/helper";
 import withAuth from "@/components/authentication";
+import Loading from "@/components/loader/loading";
 // import { Checkbox } from "antd";
 
 function Cart(props) {
@@ -42,6 +43,7 @@ function Cart(props) {
     [selected]
   );
   useEffect(() => {
+   
     cart.getListCart()
     if (cart.isSuccess) {
       setSelected(cart.cart);
@@ -49,7 +51,9 @@ function Cart(props) {
   }, []);
   return (
     <>
+    
       <HeadMeta title="Cart" />
+      <Loading isLoading={cart.isLoading}/>
       <div className={`container`}>
         {/* header link  */}
         <div className={`row ${styles.custom_row} ${styles.row_header_link}`}>
@@ -139,6 +143,7 @@ function Cart(props) {
                               className="btn btn-danger"
                               on
                               onClick={() => setShowModal(index)}
+                              disabled={cart.isLoading}
                             >
                               Delete
                             </button>
@@ -195,7 +200,7 @@ function Cart(props) {
               >
                 Return To Shop
               </button>
-              <button type="submit" className="btn btn-outline-dark style">
+              <button type="submit" className="btn btn-outline-dark style" disabled={cart.isLoading}>
                 Update Cart
               </button>
             </div>
@@ -248,7 +253,7 @@ function Cart(props) {
 
                   <div className="d-flex justify-content-around">
                     <Link href="/checkout">
-                      <button type="submit" className="btn btn-danger ">
+                      <button type="submit" className="btn btn-danger " disabled={cart.isLoading}>
                         Process Checkout
                       </button>
                     </Link>

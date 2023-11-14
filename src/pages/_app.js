@@ -5,11 +5,10 @@ import Loader from "@/components/loader";
 import { useUserStore } from "@/zustand/store";
 // Import styles
 import "@/styles/globals.css";
-import "nprogress/nprogress.css";
+
 export default function App({ Component, pageProps }) {
   const user = useUserStore();
   useEffect(() => {
-    console.log('◀◀◀ getme ▶▶▶');
     user.getMe();
   }, []);
   return (

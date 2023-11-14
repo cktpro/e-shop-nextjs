@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env:{
-    NEXT_PUBLIC_BACKEND_URL:"http://localhost:9000"
+    NEXT_PUBLIC_BACKEND_URL:"https://e-shop123-backend.vercel.app"
   },
   images: {
     remotePatterns: [

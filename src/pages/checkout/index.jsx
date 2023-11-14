@@ -13,6 +13,7 @@ import { useCartStore, useUserStore } from "@/zustand/store";
 import HeadMeta from "@/components/HeadMeta";
 import { useShippingStore } from "@/zustand/shipping";
 import { formattedMoney } from "@/helper";
+import Loading from "@/components/loader/loading";
 
 function Checkout(props) {
   
@@ -45,6 +46,7 @@ function Checkout(props) {
   return (
     <>
       <HeadMeta title="Check out" />
+      <Loading isLoading={shipping.isLoading}/>
       <div className="container mb-5">
         {/* header link */}
         <div className="d-flex my-5 text-black-50 form-text">

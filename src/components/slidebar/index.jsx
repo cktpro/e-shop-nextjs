@@ -102,7 +102,7 @@ function SlideBar(props) {
             if (item.sub && item.sub.length > 0) {
               return (
                 <li key={index}>
-                  <Link href="/">{item.name}</Link>
+                  <Link href="/product">{item.name}</Link>
                   <i onClick={showMenu(index)}>
                     {item.isExtend ? (
                       <Image
