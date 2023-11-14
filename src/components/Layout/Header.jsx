@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import styles from "@/styles/header.module.scss";
 import Account from "./Account";
-import { useCartStore } from "@/zustand/store";
+import { useCartStore, useUserStore } from "@/zustand/store";
 const { Search } = Input;
 // Item of Language Select
 const items = [
@@ -27,13 +27,14 @@ const items = [
 function Header(props) {
   const router = useRouter();
   const cart=useCartStore();
+  const user=useUserStore()
   const [isShowMenu, setIsShowMenu] = useState(false);
   const showMenu = useCallback(() => {
     setIsShowMenu((prev) => !prev);
   }, []);
 useEffect(()=>{
   cart.getListCart()
-},[])
+},[user.isLogin])
   return (
     <>
       {/* Top Header */}

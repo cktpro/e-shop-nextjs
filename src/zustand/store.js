@@ -5,6 +5,7 @@ const useUserStore = create((set) => ({
   isLoading: {},
   isLogin: null,
   profile: {},
+  isAuthenticated:false,
   isProfile: false,
   isLogout: false,
   login: async (data) => {
@@ -16,33 +17,33 @@ const useUserStore = create((set) => ({
       axiosClient.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${result.data.payload.token}`;
-      set({ isLogin: true, loading: false });
+      const result2 = await axiosClient.get("/user/get_profile");
+      set({profile: result.data.payload,isAuthenticated:true, isLogin: true, isLoading: false });
     } catch (error) {
-      set({ profile: {}, isLogin: false, isLoading: false });
+      set({  isLogin: false, isLoading: false });
     }
   },
   getMe: async () => {
-    set({ loading: true });
+    set({ isloading: true });
     try {
       const token = localStorage.getItem("Access_Token");
       axiosClient.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       const result = await axiosClient.get("/user/get_profile");
-      set({ profile: result.data.payload, loading: false, isProfile: true });
+      set({ profile: result.data.payload,isLogin:true, isLoading: false,isAuthenticated:true, isProfile: true });
     } catch (error) {
-      console.log("◀◀◀ error ▶▶▶", error);
-      set({ profile: null, loading: false });
+      set({ isLoading: false });
     }
   },
   logout: async () => {
-    set({ loading: true });
+    set({ isLoading: true });
     try {
       localStorage.removeItem("Access_Token");
-      localStorage.sremoveItem("Refresh_Token");
+      localStorage.removeItem("Refresh_Token");
       axiosClient.defaults.headers.delete["Authorization"];
-      set({ profile: {}, isProfile: false, loading: false });
+      set({ profile: {}, isProfile:false,isLogin: false, isLoading: false });
     } catch (error) {
       console.log("◀◀◀ error ▶▶▶", error);
-      set({ loading: false });
+      set({ isLoading: false });
     }
   },
 }));

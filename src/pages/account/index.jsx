@@ -2,10 +2,10 @@ import HeadMeta from "@/components/HeadMeta";
 import React from "react";
 import styles from "./account.module.scss";
 import { useUserStore } from "@/zustand/store";
+import withAuth from "@/components/authentication";
 function Account(props) {
 const account = useUserStore()
   return (
-
     <>
       <HeadMeta title="Account" />
       <div className="container">
@@ -33,7 +33,7 @@ const account = useUserStore()
             </div>
           </div>
           {/* Form Account */}
-          {account.profile?<form action="" className={`${styles.account_form}`}>
+<form action="" className={`${styles.account_form}`}>
             <h3 className="text-danger">Edit your profile</h3>
             <div className="row">
               <div className="col">
@@ -129,7 +129,7 @@ const account = useUserStore()
               Save Changes
               </button>
             </div>
-          </form>:<div className="w-100"><p className="alert alert-warning ">Please Login</p></div>}
+          </form>
           <div>
           </div>
         </div>
@@ -138,4 +138,4 @@ const account = useUserStore()
   );
 }
 
-export default Account;
+export default withAuth(Account);

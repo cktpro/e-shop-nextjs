@@ -8,9 +8,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import HeadMeta from "@/components/HeadMeta";
 import { useRouter } from "next/router";
-import { useUserStore } from "@/zustand/store";
+import { useCartStore, useUserStore } from "@/zustand/store";
 function Form(props) {
-  const route = useRouter();
+  const router = useRouter();
   const user=useUserStore()
   const validationLogin = useFormik({
     initialValues: {
@@ -44,8 +44,8 @@ function Form(props) {
   });
   if(user.isLogin===true){
     setTimeout(() => {
-      route.push("/");
-    }, 2000);
+      router.back();
+    }, 0);
   }
   return (
     <>
@@ -142,6 +142,7 @@ function Form(props) {
                   type="submit"
                   className="btn btn-danger px-3"
                   onClick={validationLogin.submitForm}
+                  disabled={user.isLoading===true?true:false}
                 >
                   Login
                 </button>

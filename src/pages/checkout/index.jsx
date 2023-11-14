@@ -140,7 +140,6 @@ function Checkout(props) {
                     className={`form-control ${styles.input_info}`}
                     onChange={(e) => shipping.getDistrict(e.target.value)}
                     name="province"
-                    defaultValue={user.profile.address[0].provinceId}
                   >
                     {shipping.isProvince === true &&
                       shipping.provinceList.map((item, idx) => {
@@ -148,7 +147,7 @@ function Checkout(props) {
                           item.ProvinceID == user.profile.address[0].provinceId
                         ) {
                           return (
-                            <option value={item.ProvinceID} key={idx}>
+                            <option value={item.ProvinceID} key={idx} selected>
                               {item.ProvinceName}{" "}
                             </option>
                           );
@@ -304,7 +303,7 @@ function Checkout(props) {
                             />
                             <div className="d-flex flex-column mx-2">
                               <span>{item.productDetail.name}</span>
-                              <span className="text-black-50">quantity : {item.productDetail.quantity}</span>
+                              <span className="text-black-50">quantity : {item.product.quantity}</span>
                             </div>
                           </div>
                           <label>

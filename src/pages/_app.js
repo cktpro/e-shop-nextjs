@@ -1,13 +1,23 @@
+import Router from "next/router";
+import { useEffect, useState } from "react";
 import Layout from "@/components/layout";
+import Loader from "@/components/loader";
+import { useUserStore } from "@/zustand/store";
+// Import styles
 import "@/styles/globals.css";
-import store  from "@/redux-store/index";
-import { Provider } from "react-redux";
+import "nprogress/nprogress.css";
 export default function App({ Component, pageProps }) {
+  const user = useUserStore();
+  useEffect(() => {
+    console.log('◀◀◀ getme ▶▶▶');
+    user.getMe();
+  }, []);
   return (
-    <Provider store={store}>
+    <>
+      <Loader />
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </Provider>
+    </>
   );
 }

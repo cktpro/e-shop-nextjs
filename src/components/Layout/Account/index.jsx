@@ -3,11 +3,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useUserStore } from "@/zustand/store";
 import styles from "@/components/Layout/Account/account.module.scss";
+import { useRouter } from "next/router";
 function Account(props) {
+  const router=useRouter()
   const user=useUserStore()
   const { title } = props;
   const userRef = useRef();
-
+const handleLogout=async()=>{
+ await user.logout()
+ router.reload()
+}
   const showUser = () => {
     userRef.current.classList.toggle(styles.active_user_dropdown);
   };
@@ -27,7 +32,7 @@ function Account(props) {
       )}
 
       <div ref={userRef} className={styles.user_dropdown}>
-        {user.isProfile ? (
+        {user.isLogin===true ? (
           <ul className={styles.menu_account}>
             <li>
               <Link href="/account">Manage My Account</Link>
@@ -38,7 +43,7 @@ function Account(props) {
             <li>
               <Link href="/account">My Review</Link>
             </li>
-            <li onClick={()=>user.logout()}>
+            <li onClick={()=>handleLogout()}>
               Logout
             </li>
           </ul>

@@ -9,6 +9,7 @@ import { useCartStore } from "@/zustand/store";
 import { message } from "antd";
 import { useRouter } from "next/router";
 import { formattedMoney } from "@/helper";
+import withAuth from "@/components/authentication";
 // import { Checkbox } from "antd";
 
 function Cart(props) {
@@ -20,9 +21,6 @@ function Cart(props) {
   const formSubmit =  async(event) => {
     event.preventDefault();
     await cart.updateCart(selected);
-  };
-  const handleChecked = (e, item) => {
-    if (e.target.checked) setSelected((prev) => [...prev, item]);
   };
   const handleChange = useCallback(
     (e, index) => {
@@ -44,10 +42,11 @@ function Cart(props) {
     [selected]
   );
   useEffect(() => {
+    cart.getListCart()
     if (cart.isSuccess) {
       setSelected(cart.cart);
-    } else router.push("/auth/login");
-  }, [cart]);
+    }
+  }, []);
   return (
     <>
       <HeadMeta title="Cart" />
@@ -124,7 +123,7 @@ function Cart(props) {
                           </span>
                         </td>
                         <td>
-                          {console.log('◀◀◀ item.product.quantity ▶▶▶',item.product.quantity)}
+                          
                           {formattedMoney(
                             ((item.productDetail.price *
                               (100 - item.productDetail.discount)) /
@@ -266,4 +265,4 @@ function Cart(props) {
   );
 }
 
-export default Cart;
+export default withAuth(Cart);
