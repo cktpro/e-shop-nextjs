@@ -43,11 +43,14 @@ function Form(props) {
       // Xử lý logic đăng nhập ở đây
     },
   });
+ useEffect(()=>{
   if(user.isLogin===true){
     setTimeout(() => {
-      router.back();
-    }, 2000);
+      window.history.back();
+    }, 0);
   }
+ },[user.isLogin])
+  
   return (
     <>
       <HeadMeta title="Login" />

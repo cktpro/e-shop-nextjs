@@ -2,10 +2,11 @@ import React, { memo, useCallback, useState } from "react";
 import Image from "next/image";
 import styles from "./productDetail.module.scss";
 import SwiperProductImage from "./swiperProductImage";
-import { renderStars } from "@/helper";
+import { formattedMoney, renderStars } from "@/helper";
 import RelatedProducts from "@/components/relatedProducts";
 import bestSelling from "@/data/bestSelling.json";
-function ProductDetail() {
+function ProductDetail(props) {
+  const { item, isRelated } = props;
   const [colorSelected, setColorSelected] = useState("1");
 
   const [sizeSelected, setSizeSelected] = useState("1");
@@ -39,16 +40,17 @@ function ProductDetail() {
     setQuantity(parseInt(e.target.value));
   }, []);
 
-  const handleBuyNow = useCallback(() => {
-    console.log("««««« colorSelected »»»»»", colorSelected);
-    console.log("««««« sizeSelected »»»»»", sizeSelected);
-    console.log("««««« quantity »»»»»", quantity);
-  }, [colorSelected, quantity, sizeSelected]);
+  const handleBuyNow = useCallback(() => {}, [
+    colorSelected,
+    quantity,
+    sizeSelected,
+  ]);
 
   return (
-    <div className={`container`}>
+    // <div className={`container`}>
+    <div>
       {/* header link */}
-      <div className={`row ${styles.custom_row} ${styles.row_header_link}`}>
+      {/* <div className={`row ${styles.custom_row} ${styles.row_header_link}`}>
         <div className={`col-12 ${styles.custom_col}`}>
           <div className={styles.header_link}>
             <div className={styles.parent_link}>Products /</div>
@@ -56,7 +58,7 @@ function ProductDetail() {
             <div className={styles.children_link}>GamePad</div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* product detail */}
       <div className={`row ${styles.custom_row} ${styles.row_product_detail}`}>
@@ -64,7 +66,13 @@ function ProductDetail() {
         <div
           className={`col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 ${styles.custom_col}`}
         >
-          <SwiperProductImage />
+          <Image
+            src={item.image.location}
+            alt={item.name}
+            width={400}
+            height={400}
+          />
+          {/* <SwiperProductImage /> */}
         </div>
 
         <div
@@ -75,7 +83,7 @@ function ProductDetail() {
             className={`row ${styles.custom_row} ${styles.row_product_name}`}
           >
             <div className={`col-12 ${styles.custom_col}`}>
-              <div className={styles.product_name}>Havic HV G-92 Gamepad</div>
+              <div className={styles.product_name}>{item.name}</div>
             </div>
           </div>
 
@@ -91,9 +99,10 @@ function ProductDetail() {
             </div>
 
             {/* num of evaluate */}
-            <div
+            {/* <div
               className={`col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3 ${styles.custom_col}`}
-            >
+            > */}
+            <div className="d-flex flex-row">
               <div className={styles.num_of_evaluate}>(150 Reviews)</div>
             </div>
 
@@ -101,25 +110,26 @@ function ProductDetail() {
             <div
               className={`col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 ${styles.custom_col}`}
             >
-              <div className={styles.num_of_stock}>Stock: 150</div>
+              <div className={styles.num_of_stock}>Stock: {item.stock}</div>
             </div>
           </div>
 
           {/* price */}
           <div className={`row ${styles.custom_row} ${styles.row_price}`}>
             <div className={`col-12 ${styles.custom_col}`}>
-              <div className={styles.price}>10.000.000 VND</div>
+              <div className={styles.price}>{formattedMoney(item.price)}</div>
             </div>
           </div>
 
           {/* description */}
           <div className={`row ${styles.custom_row} ${styles.row_description}`}>
             <div className={`col-12 ${styles.custom_col}`}>
-              <div className={styles.description}>
+              {/* <div className={styles.description}>
                 PlayStation 5 Controller Skin High quality vinyl with air
                 channel adhesive for easy bubble free install & mess free
                 removal Pressure sensitive.
-              </div>
+              </div> */}
+              <div className={styles.description}>{item.description}</div>
             </div>
           </div>
 
@@ -232,8 +242,11 @@ function ProductDetail() {
           <div
             className={`row ${styles.custom_row} ${styles.row_quantity_buy}`}
           >
-            <div
+            {/* <div
               className={`col-12 col-sm-12 col-md-3 col-lg-5 col-xl-4 ${styles.custom_col} ${styles.custom_col_quantity_buy}`}
+            > */}
+               <div
+              className={`d-flex`}
             >
               <div className={styles.cover_quantity}>
                 <div onClick={subQuantity} className={styles.subtraction}>
@@ -249,7 +262,7 @@ function ProductDetail() {
                     type="number"
                     required
                     // value={quantity || 0}
-                    value={quantity !== 0 ? parseInt(quantity).toString() : '0'}
+                    value={quantity !== 0 ? parseInt(quantity).toString() : "0"}
                     onChange={handleChangeQuantity}
                   />
                 </div>
@@ -266,6 +279,11 @@ function ProductDetail() {
             <div
               className={`col-12 col-sm-12 col-md-3 col-lg-5 col-xl-4 ${styles.custom_col} ${styles.custom_col_quantity_buy}`}
             >
+              <div className={styles.cover_buy_now}>
+                <button onClick={handleBuyNow} className={styles.buy_now}>
+                  Buy Now
+                </button>
+              </div>
               <div className={styles.cover_buy_now}>
                 <button onClick={handleBuyNow} className={styles.buy_now}>
                   Buy Now
@@ -338,7 +356,7 @@ function ProductDetail() {
         </div>
       </div>
 
-      <RelatedProducts list={bestSelling} />
+      {isRelated ? <RelatedProducts list={bestSelling} /> : null}
     </div>
   );
 }

@@ -52,23 +52,24 @@ const useCartStore = create((set) => ({
   isSuccess: false,
   isError: false,
   cart: {},
-  createCart: async (data) => {
+  createCart: async (cartData) => {
     set({ isLoading: true });
     try {
-      const result = await axiosClient.post("/user/login", data);
-      localStorage.setItem("Access_Token", result.data.payload.token);
-      localStorage.setItem("Refresh_Token", result.data.payload.refreshToken);
-      axiosClient.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${result.data.payload.token}`;
+      const result = await axiosClient.post("/cart",cartData);
+      const data = result.data.payload;
+      console.log('◀◀◀ data ▶▶▶',data);
       set({ isSuccess: true, isLoading: false });
+      message.success("Thêm giỏ hàng thành công")
     } catch (error) {
+      message.error("Thêm giỏ hàng thất bại")
+      console.log('◀◀◀ error ▶▶▶',error);
       set({ isError: true, isLoading: false });
     }
   },
   getListCart: async () => {
     set({ isLoading: true });
     try {
+      
       if(!axiosClient.defaults.headers.common.Authorization) return false
       const result = await axiosClient.get("/cart");
       const data = result.data.payload;

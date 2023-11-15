@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { formattedMoney } from "@/helper";
 import withAuth from "@/components/authentication";
 import Loading from "@/components/loader/loading";
+import LoadingPage from "@/components/loader/loadingpage";
 // import { Checkbox } from "antd";
 
 function Cart(props) {
@@ -18,7 +19,6 @@ function Cart(props) {
   const cart = useCartStore();
   const [selected, setSelected] = useState([]);
   const [showModal, setShowModal] = useState(null);
-  const router = useRouter();
   const formSubmit =  async(event) => {
     event.preventDefault();
     await cart.updateCart(selected);
@@ -42,8 +42,8 @@ function Cart(props) {
     },
     [selected]
   );
+
   useEffect(() => {
-   
     cart.getListCart()
     if (cart.isSuccess) {
       setSelected(cart.cart);
@@ -83,7 +83,7 @@ function Cart(props) {
                   <th scope="col"></th>
                 </tr>
               </thead>
-              {cart.isSuccess ? (
+              {cart.isSuccess===true ? (
                 <tbody>
                   {cart.cart.map((item, index) => {
                     total +=
@@ -182,13 +182,7 @@ function Cart(props) {
                     );
                   })}
                 </tbody>
-              ) : (
-                <tbody>
-                  <tr>
-                    <td colSpan={5}>Loading</td>
-                  </tr>
-                </tbody>
-              )}
+              ) : <LoadingPage/>}
             </table>
             <div className={`d-flex justify-content-between`}>
               <button

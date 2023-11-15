@@ -1,13 +1,19 @@
+import nProgress from 'nprogress';
 import NProgress from 'nprogress'; // NProgress package
 import "nprogress/nprogress.css";
+import { useEffect } from 'react';
 NProgress.configure({ showSpinner: false });
-// Hiển thị tiến trình khi route thay đổi
+
 const Loading = (props) => {
-    const {isLoading}=props
-    isLoading?NProgress.start():NProgress.done()
-  return (
-null
-  );
-};
+  let {isLoading}=props;
+  useEffect(()=>{
+    if(isLoading)nProgress.start()
+    else nProgress.done()
+  })
+    
+    // if(isLoading){
+    
+  return null
+}
 
 export default Loading;

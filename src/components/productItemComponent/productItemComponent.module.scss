@@ -1,98 +1,103 @@
-.card{
-    font-size: 0.75rem;
-    width: 17.125rem;
-    margin-top: 1rem;
-    border: 1px solid rgba(0,0,0,0.1);
+.card {
+  width: 17.125rem;
+  margin: 1rem auto 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  .card_img {
+    position: relative;
+    // height: 15.625rem;
+    height: 15.625rem;
+    background-color: #ebebeb;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
     border-radius: 0.25rem;
-    .card_img{
-        position: relative;
-        // height: 15.625rem;
-        height: 15.625rem;
-        background-color: #ebebeb;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.25rem;
-        padding-bottom: 1.5rem;
-        img{
-            width: 12.5rem;
-            height: 11.25rem;
-            object-fit: fill;
-        }
-        .content_sale{
-            position: absolute;
-            z-index: 9;
-            top:0.75rem;
-            left: 0.75rem;
-            background-color: #DB4444;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.25rem;
+    padding-bottom: 1.5rem;
+   
 
-        }
-        .btn_top_right{
-            z-index: 9;
-            width: 2.125rem;
-            height: 2.125;
-            position: absolute;
-            top:0.5rem;
-            right: 0.5rem;
-            background-color: rgba(0,0,0,0);
-            border-radius: 50%;
-
-            border: none;
-            img{
-                width: 1.5rem;
-                height: 1.5rem;
-            }
-            &:hover{
-                scale: 1.1;
-            }
-
-        }
-        .btn_add_cart{
-            visibility: hidden;
-            display: none;
-            z-index: 9;
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background-color: black;
-            border-radius:  0 0 0.25rem 0.25rem;
-            height: 2.5rem;
-            opacity: 0;
-            transition: opacity 0.5s;
-            img{
-                width: 1.5rem;
-                height: 1.5rem;
-                filter: invert(1);
-                vertical-align: middle;
-            }
-        }
-        .content_sale,.btn_add_cart{
-            color: #fff;
-        }
-        // &:hover{
-        //     .btn_add_cart{
-        //         display: block !important;
-        //     }
-        // }
+    .img {
+      position: relative;
+      width: 12.5rem;
+      height: 11.25rem;
+      object-fit: fill;
     }
-    .card_content{
-        display: flex;
-        flex-direction: column;
-        gap: 0.625rem;
-        margin: 0.5rem;
+    .content_sale {
+      font-size: 0.75rem;
+      position: absolute;
+      z-index: 9;
+      top: 0.75rem;
+      left: 0.75rem;
+      background-color: #db4444;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.25rem;
+    }
+    .btn_top_right {
+      z-index: 9;
+      width: 2.125rem;
+      height: 2.125;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 50%;
 
+      border: none;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      &:hover {
+        scale: 1.1;
+      }
     }
-    &:hover{
-        .btn_add_cart{
-            opacity: 1;
-            visibility:visible;
-        }
+    .btn_add_cart {
+      visibility: hidden;
+      display: none;
+      z-index: 9;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: black;
+      border-radius: 0 0 0.25rem 0.25rem;
+      height: 2rem;
+      opacity: 0;
+      transition: opacity 1s ease;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+        filter: invert(1);
+        vertical-align: middle;
+      }
+      &:disabled {
+        background-color: grey;
+      }
     }
+    .content_sale,
+    .btn_add_cart {
+      color: #fff;
+    }
+    // &:hover{
+    //     .btn_add_cart{
+    //         display: block !important;
+    //     }
+    // }
+  }
+  .card_content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 0.5rem;
+  }
+  &:hover {
+    .btn_add_cart {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
