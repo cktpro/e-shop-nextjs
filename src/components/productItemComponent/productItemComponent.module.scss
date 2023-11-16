@@ -20,7 +20,7 @@
       position: relative;
       width: 12.5rem;
       height: 11.25rem;
-      object-fit: fill;
+      object-fit: contain;
     }
     .content_sale {
       font-size: 0.75rem;
@@ -68,6 +68,7 @@
       height: 2rem;
       opacity: 0;
       transition: opacity 1s ease;
+      border: none;
       img {
         width: 1.5rem;
         height: 1.5rem;

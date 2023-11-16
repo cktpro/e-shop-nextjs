@@ -23,6 +23,7 @@ function Cart(props) {
     event.preventDefault();
     await cart.updateCart(selected);
   };
+  const getListCart=useCartStore((state)=>state.getListCart)
   const handleChange = useCallback(
     (e, index) => {
       if (parseInt(e.target.value) > selected[index].productDetail.stock) {
@@ -43,12 +44,15 @@ function Cart(props) {
     [selected]
   );
 
+
   useEffect(() => {
-    cart.getListCart()
+    getListCart()
     if (cart.isSuccess) {
       setSelected(cart.cart);
     }
   }, []);
+
+ console.log('◀◀◀ hello ▶▶▶');
   return (
     <>
     
@@ -83,7 +87,7 @@ function Cart(props) {
                   <th scope="col"></th>
                 </tr>
               </thead>
-              {cart.isSuccess===true ? (
+              {cart.isLoading===false ? (
                 <tbody>
                   {cart.cart.map((item, index) => {
                     total +=
