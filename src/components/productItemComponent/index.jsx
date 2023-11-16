@@ -40,7 +40,7 @@ function ProductItemComponent(props) {
           <div className={styles.card_img}>
             <Image
               className={styles.img}
-              src={item.image.location}
+              src={item.image?.location?item.image?.location:require("@/assets/images/noimage.jpeg")}
               alt={item.name}
               fill
             />

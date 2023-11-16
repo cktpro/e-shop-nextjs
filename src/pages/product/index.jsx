@@ -95,8 +95,8 @@ const[supplierList,setsupplierList]= useState([]);
         </div>
         
         <div className="row">
-          {list.map((item, idx) => {
-            return <ProductItemComponent key={idx} item={data[0]}  />;
+          {data.map((item, idx) => {
+            return <ProductItemComponent key={idx} item={item}  />;
           })}
         </div>
       </div>

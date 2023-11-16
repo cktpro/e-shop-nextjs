@@ -50,6 +50,7 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    gap:160px;
     .logo_header {
       font-size: 1.5rem;
       white-space: nowrap;
@@ -159,59 +160,63 @@
 }
 // Mobile
 .navbar_mobile{
+  visibility: hidden;
   width: 100%;
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0; 
-  max-width: 0;
   overflow: hidden;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  transition: ease 1s;
-  .content{
-    padding: 2rem;
-    position: absolute;
-    top:0;
-    right:0;
-    height: 100vh;
+background-color: rgba(0, 0, 0, 0.8);
+  // transition: ease 1s;
+
+}
+.content{
+  padding: 2rem;
+  position: absolute;
+  top:0;
+  right:0;
+  max-width: 0;
+  height: 100vh;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  background-color: #fafafa;
+  transition: width ease 2s;
+  
+  .btn_navbar_mobile{
+    position: relative;
+    top:-1rem;
+    left: -1rem;
+  }
+  .menu_navbar{
     display: flex;
-    gap: 2rem;
     flex-direction: column;
-    background-color: #fafafa;
-    
-    
-    .btn_navbar_mobile{
-      position: relative;
-      top:-1rem;
-      left: -1rem;
-    }
-    .menu_navbar{
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .box_icon_mobile{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      .icon_whishlist,
-      .icon_cart,
-      .icon_account {
-        padding: 4px;
-        border-radius: 50%;
-        &:hover {
-          background-color: #db4444;
-          color: #fff;
-        }
+    gap: 2rem;
+  }
+  .box_icon_mobile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .icon_whishlist,
+    .icon_cart,
+    .icon_account {
+      padding: 4px;
+      border-radius: 50%;
+      &:hover {
+        background-color: #db4444;
+        color: #fff;
       }
     }
-  
-}
+  }
+
 }
 .navbar_mobile_active{
-  max-width: 100vw;
+  visibility: visible;
+  .content{
+    max-width: 100vw;
+  }
 }
 
 
